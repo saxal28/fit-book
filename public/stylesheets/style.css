@@ -1,0 +1,90 @@
+body {
+    background: #dddddd;
+}
+
+.thumbnail {
+    width: 100%;
+    float: left;
+    margin: 5px;
+    border: none;
+    padding: 0px;
+}
+
+.home-header {
+    background: url(https://hd.unsplash.com/photo-1471477985614-a55f7db053db);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+
+html, body {
+    height: 100%;
+}
+
+.navbar-inverse {
+    margin-bottom: 0px;
+    border-radius: 0px;
+}
+h1 {
+    margin-top: 0px;
+}
+
+.header {
+    font-size: 6em;
+    text-align: center;
+    color: white;
+    padding-top: 20%;
+    font-family: Bowlby One SC;
+    text-shadow: 2px 2px 4px black;
+}
+
+.page-header {
+    font-size: 4em;
+    text-align: center;
+    color: white;
+    padding: 5%;
+    font-family: Bowlby One SC;
+    text-shadow: 2px 2px 4px black;
+    background-color: 	#9c9c9c;
+}
+
+
+.macros {
+    display: inline;
+}
+
+.show-image{
+    width: 100%;
+}
+
+.article-container {
+    width: 100%;
+    height: auto;
+    margin: 15px auto;
+    background:green;
+}
+
+.article-image {
+   width: 100%;
+}
+
+span {
+    padding-left:5px;
+}
+
+
+
+/*.btn-secondary {*/
+/*    border: 2px solid #252525;;*/
+/*    color: gray;*/
+/*    width: auto;*/
+/*    height: 50px;*/
+/*    line-height: 35px;*/
+/*    font-size: 2em;*/
+/*}*/
+
+/*.btn-secondary:hover {*/
+/*     background-color: #252525;*/
+/*     color: gray;*/
+/*}*/

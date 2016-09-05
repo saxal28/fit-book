@@ -1,0 +1,61 @@
+<% include /partials/header %>
+
+<h1 class="page-header">Edit Recipe</h1>
+
+<div class="container">
+  
+    <form method="post" action="/recipes/<%=recipe._id%>?_method=PUT">
+      
+      <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+              <label >Title</label>
+              <input type="text" class="form-control" value="<%=recipe.title %>" name="recipe[title]">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+              <label>Image Link</label>
+              <input type="text" class="form-control" value="<%=recipe.image %>" name ="recipe[image]">
+            </div>
+        </div>
+      </div>
+       
+       <label>Instructions</label>
+       <textarea class="form-control" rows="15" name="recipe[instructions]"><%=recipe.instructions %></textarea>
+       
+        <div class="row macros">
+          <div class="col-md-3">
+              <div class="form-group">
+                <label>Calories</label>
+                <input type="text" class="form-control" value="<%=recipe.calories %>" name="recipe[calories]">
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="form-group">
+                <label>Carbohydrates</label>
+                <input type="text" class="form-control" value="<%=recipe.carb %>" name="recipe[carb]">
+              </div>
+          </div>
+          <div class="col-md-3">
+              <div class="form-group">
+                  <label >Protein</label>
+                  <input type="text" class="form-control" value="<%=recipe.protein %>" name="recipe[protein]">
+              </div>
+          </div>
+          <div class="col-md-3">
+               <div class="form-group">
+                  <label>Fat</label>
+                  <input type="text" class="form-control" value="<%=recipe.fat %>" name="recipe[fat]">
+              </div>
+          </div>
+              
+                
+        </div>
+        <div class="row text-center">
+            <button class="btn btn-warning btn-lg btn-block">Edit!</button>
+        </div>
+</form>
+</div>
+
+<% include /partials/footer %>

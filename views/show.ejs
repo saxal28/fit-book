@@ -1,0 +1,42 @@
+<% include /partials/header %>
+
+
+<h1 class="page-header"><%= recipe.title%></h1>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12 well">
+            <img class="show-image"src="<%=recipe.image%>">
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-3 well">
+            <ul><h2 class="text-center">Nutrition</h2>
+                <li>Calories: <%=recipe.calories%></li>
+                <li>Carbs:  <%=recipe.carb%></li>
+                <li>Protein:  <%=recipe.protein%></li>
+                <li>Fat  <%=recipe.fat%></li>
+            </ul>
+        </div>
+        <div class="col-md-3 well">
+            <h2 class="text-center">Shopping List</h2>
+        </div>
+        <div class="col-md-6 well">
+            <h2 class="text-center">Instructions</h2>
+                <p>Kitsch polaroid mustache offal, williamsburg health goth pug sustainable cardigan vinyl messenger bag selfies organic. Man braid humblebrag semiotics selvage kinfolk distillery, mumblecore ennui. Scenester everyday carry butcher, kogi sriracha heirloom chartreuse humblebrag locavore health goth. Freegan pour-over organic fingerstache cliche migas. Organic swag post-ironic quinoa squid. Neutra chicharrones street art heirloom. Green juice wayfarers echo park swag, beard kickstarter sustainable messenger bag tilde craft beer.</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <a href="/recipes" class="btn btn-primary">Back</a>
+        <a href="/recipes/<%=recipe._id %>/edit" class="btn btn-warning">Edit</a>
+        <form method="post" action="/recipes/<%=recipe._id%>?_method=DELETE">
+            <button class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+</div>
+
+
+<% include /partials/footer %>

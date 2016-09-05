@@ -1,0 +1,61 @@
+<% include /partials/header %>
+
+<h1 class="page-header">New Recipe</h1>
+
+<div class="container">
+  
+    <form method="post" action="/recipes">
+      <div class="row">
+            <div class="col-md-6">
+                 <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" class="form-control" placeholder="title" name="recipe[title]">
+                  </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                  <label>Image Link</label>
+                  <input type="text" class="form-control" placeholder="image url" name ="recipe[image]">
+                </div>
+            </div>
+    </div>
+       
+        <label>Comments</label>
+       <textarea class="form-control" rows="15" placeholder="type comments/information/instructions here......" name="recipe[instructions]"></textarea>
+       
+        <div class="row macros">
+            <div class="col-md-3">
+               <div class="form-group">
+                  <label>Calories</label>
+                  <input type="text" class="form-control" placeholder="per serving" name="recipe[calories]">
+                </div>
+            </div>
+             <div class="col-md-3">
+                <div class="form-group">
+                  <label>Carbohydrates</label>
+                  <input type="text" class="form-control" placeholder="grams per serving" name="recipe[carb]">
+                </div>
+            </div>
+             <div class="col-md-3">
+                <div class="form-group">
+                  <label >Protein</label>
+                  <input type="text" class="form-control" placeholder="grams per serving" name="recipe[protein]">
+                </div>
+            </div>
+             <div class="col-md-3">
+                <div class="form-group">
+                  <label>Fat</label>
+                  <input type="text" class="form-control" placeholder="grams per serving" name="recipe[fat]">
+              </div>
+            </div>
+
+  
+        </div>
+        <div class="row">
+             <button class="btn btn-primary btn-lg btn-block">Create!</button>
+        </div>
+       
+</form>
+</div>
+
+<% include /partials/footer %>
