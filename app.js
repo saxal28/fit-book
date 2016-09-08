@@ -9,7 +9,10 @@ var app = express();
 
 
 //local database
-mongoose.connect("mongodb://localhost/fit-book");
+// mongoose.connect("mongodb://localhost/fit-book");
+
+//hosted db
+mongoose.connect("mongodb://saxal28:gatorade2@ds019846.mlab.com:19846/fit-book");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
