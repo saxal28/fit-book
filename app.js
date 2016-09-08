@@ -84,7 +84,7 @@ app.get("/recipes", function(req, res) {
 
 app.get("/recipes-of-the-month", function(req, res) {
     res.render('recipe-of-the-month/index');
-})
+});
 //============================
 //INDEX ROUTE => ARTICLES
 //============================
@@ -92,6 +92,18 @@ app.get("/recipes-of-the-month", function(req, res) {
 app.get("/articles", function(req, res) {
     res.render("articles/index");
 })
+app.get("/articles/weightlifting", function(req, res) {
+    res.render("articles/weightlifting")
+})
+
+app.get("/articles/cardio", function(req, res) {
+    res.render("articles/cardio")
+})
+
+app.get("/articles/nutrition", function(req, res) {
+    res.render("articles/nutrition")
+})
+
 
 //=====================================================================
 //--------------------------NEW ROUTES-------------------------------
@@ -195,6 +207,18 @@ app.delete("/recipes/:id", function(req, res) {
     })
 })
 
+
+//=====================================================================
+//--------------------------SIGN-IN & SIGN-UP ROUTES=-----------------
+//=====================================================================
+
+app.get("/login", function(req, res) {
+    res.render("login");
+});
+
+app.get("/register", function(req, res) {
+    res.render("register");
+});
 
 //=========================
 //server listener
