@@ -1,24 +1,39 @@
 <% include /partials/header %>
 
-<h1 class="page-header">this is the index page</h1>
+<div class="index-header">
+    <div class="overlay">
+        <div class="row">
+              Your Recipes
+        </div>
+        <div class="row">
+             <a href="/recipes/new"><button class="ui inverted massive red button">New Recipe</button></a> 
+        </div>
+      
 
-<div class="container">
-    <div class="row">
+    </div>
+</div>
+
+<div class="card-columns">
 
 <% recipes.forEach(function(recipe) { %>
-        
-    <div class="thumbnail">
-        <img src="<%= recipe.image %>">
-        <div class="caption">
+     
+     <div class="card">
+        <div class="card-block">
             <h2><%= recipe.title %></h2>
-            <p><%= recipe.instructions %></p>
+            <img class="tiny" src="<%= recipe.image %>">
+
             <a href="/recipes/<%=recipe._id%>">link</a>
+        </div> 
+    </div>
+        
+            
+            
+            
         </div>
     </div>
         
 <% }); %>
 
-    </div>
 </div>
 
 <% include /partials/footer %>

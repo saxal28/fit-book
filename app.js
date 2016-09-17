@@ -41,17 +41,17 @@ var recipeSchema = new mongoose.Schema ({
 var Recipe = mongoose.model("Recipe", recipeSchema);
 
 // //CREATE RECIPE
-// Recipe.create({
-//     title: "Protein Pancakes",
-//     image: "https://hd.unsplash.com/photo-1462188769884-495d009c7f03",
-//     instructions: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-//     calories: "800",
-//     carb: "60",
-//     protein: "45",
-//     fat: "3"
-// }, function() {
-//     console.log("created recipe!");
-// });
+Recipe.create({
+    title: "Protein Pancakes",
+    image: "https://hd.unsplash.com/photo-1462188769884-495d009c7f03",
+    instructions: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    calories: "800",
+    carb: "60",
+    protein: "45",
+    fat: "3"
+}, function() {
+    console.log("created recipe!");
+});
 
 
 
@@ -107,6 +107,13 @@ app.get("/articles/nutrition", function(req, res) {
     res.render("articles/nutrition")
 })
 
+//============================
+//INDEX ROUTE => DANGER ZONE
+//============================
+
+app.get("/danger-zone", function(req, res) {
+    res.render("articles/construction-zone");
+})
 
 //=====================================================================
 //--------------------------NEW ROUTES-------------------------------

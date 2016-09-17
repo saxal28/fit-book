@@ -1,21 +1,43 @@
 <% include /partials/header %>
 
 <style>
-    body {
+    .body {
         background: url(https://hd.unsplash.com/photo-1451706315354-d0561492e0ec);
         background-size:cover;
+        height: 100%;
+        width: 100%;
     }
-    .sub-title {
-        font-size: 4em;
+    .subtitle {
+        font-size: 2em;
         color:white;
+        text-align: center;
+    }
+    .register-form {
+        padding-top:0;
+        text-align: left;
+    }
+    label {
+        font-size: 18px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    }
+    
+    .button-row {
+        margin:0 auto;
+        padding-top: 20px;
+        text-align:center;
+    }
+    
+    .button {
+        width: 200px;
     }
     
 </style>
 
-<div class="container">
+<div class="body">
+    <div class="overlay">
     <div class="register-form">
-    <h1 class="sub-title">Login</h1>
-        <form>
+        <form action="/danger-zone">
           <div class="form-group">
             <label>Email</label>
             <input type="email" class="form-control" placeholder="Email">
@@ -24,11 +46,12 @@
             <label>Password</label>
             <input type="password" class="form-control" placeholder="Password">
             <div class="row button-row">
-                <button class="btn btn-success btn-lg btn-block">Login!</button>
+                <button class="ui inverted huge button">Login!</button>
             </div>
           </div>
         </form>
         </div>
+    </div>
 </div>
 
 <% include /partials/footer %>
