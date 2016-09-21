@@ -1,0 +1,41 @@
+<% include /partials/header %>
+
+
+<div class="weightlifting-header">
+    <h1 class="sub-title">All Articles</h1>
+</div>
+
+<div class="container well">
+    
+    <div class="ui items">
+    
+    <% article.forEach(function(article) { %>
+    
+          <div class="item">
+            <div class="image">
+              <img src="http://leanmuscleproject.com/wp-content/uploads/2015/11/barbell.jpg">
+            </div>
+            <div class="content">
+                <a class="header"><%= article.title %></a>
+                <div class="meta">
+                  <span><%= article.summary %></span>
+                </div>
+                <div class="description">
+                    <p><%= article.body%></p>
+                </div>
+                <div class="extra">
+                    <a href="/articles/all/<%=article._id%>"><button class="ui mini orange button"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+                </div>
+            </div>
+  </div>
+        
+    <% }) %>
+    
+
+
+    </div>
+
+</div>
+
+
+<% include /partials/footer %>

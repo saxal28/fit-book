@@ -2,12 +2,6 @@ body {
     background: #dddddd;
 }
 
-p {
-    font-size: 20px;
-     font-family: Bowlby One SC;
-     color:gray;
-    
-}
 
 .thumbnail {
     width: 100%;
@@ -28,7 +22,7 @@ p {
 
 .index-header {
     width: 100%;
-    height: 1000px;
+    height: 100%;
     background:url(https://hd.unsplash.com/photo-1424847651672-bf20a4b0982b);
     background-size:cover;
     /*background-repeat: no-repeat;*/
@@ -38,14 +32,14 @@ p {
     margin-bottom: 50px
 }
 
-.header {
-    font-size: 6em;
-    text-align: center;
-    color: white;
-    padding-top: 20%;
-    font-family: Bowlby One SC;
-    text-shadow: 2px 2px 4px black;
-}
+/*.header {*/
+/*    font-size: 6em;*/
+/*    text-align: center;*/
+/*    color: white;*/
+/*    padding-top: 20%;*/
+/*    font-family: Bowlby One SC;*/
+/*    text-shadow: 2px 2px 4px black;*/
+/*}*/
 
 .page-header {
     font-size: 4em;
@@ -64,7 +58,6 @@ p {
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
     font-size: 3em;
     margin-bottom: 50px
 }
@@ -167,9 +160,41 @@ h1 {
     margin: 0 auto;
 }
 
-.article-image {
-   width:33%;
-   float:left;
+.weightlifting {
+    background:orange;
+    width: 100%;
+    height: 400px;
+    background:url(https://hd.unsplash.com/photo-1457393568996-e452740c8346);
+    background-size:cover;
+    background-position: center;
+}
+
+.cardio {
+    background:yellow;
+    width: 100%;
+    height: 400px;
+    background:url(https://hd.unsplash.com/photo-1466761366829-84fd59a22e0b);
+    background-size:cover;
+    background-position: center;
+}
+
+.nutrition {
+    background:red;
+    width: 100%;
+    height: 400px;
+    background:url(https://hd.unsplash.com/photo-1437750769465-301382cdf094);
+    background-size:cover;
+    background-position: center;
+}
+
+.article-overlay {
+    padding-top:20%;
+    text-align:center;
+    background: orange;
+    opacity: 0.8;
+    width:100%;
+    height:100%;
+    font-size: 60px;
 }
 
 .article-row {
@@ -228,7 +253,6 @@ span {
 
 .form-group {
     width: 400px;
-    margin: 0 auto;
 }
 
 .button-row {
@@ -240,10 +264,10 @@ span {
 }
 
 label {
-    font-size: 2em;
-    margin: 5px;
-    color:white;
-    text-shadow: 2px 2px 4px black;
+    font-size: 18px;
+        padding-bottom: 10px;
+        padding-top: 10px;
+    /*text-shadow: 2px 2px 4px black;*/
 }
 
 .tiny {
@@ -267,17 +291,20 @@ a {
     color:white;
 }
 
-/*.navbar-collapse {*/
-/*    background: gray;*/
-/*    color: white;*/
-/*}*/
+.navbar-collapse {
+    background: orange;
+    color: white;
+    opacity: .8;
+    
+}
 
 .navbar-inverse .navbar-nav>li>a {
     color:white;
 }
 
 .navbar-inverse:hover .navbar-nav>li>a:hover {
-    color:orange;
+    color:blue;
+    font-size: 20px;
 }
 
 .navbar-inverse .navbar-brand { 
@@ -293,7 +320,7 @@ a {
     width:100%;
     height:100%;
     background-color:black;
-    opacity: 0.7;
+    opacity: 0.55;
     padding-top: 20%;
     font-size: 2em;
     color:white;
@@ -313,6 +340,27 @@ a {
 .row {
     margin:0;
 }
+
+.selectpicker {
+    width: 400px;
+    background:black;
+    font-size: 17px;
+    padding: 5px;
+    color:gray;
+}
+
+.form-control {
+    width: 400px;
+    background:black;
+    color:white;
+    
+}
+
+
+
+/*.weightlifting {*/
+/*    background:url(https://hd.unsplash.com/photo-1434754205268-ad3b5f549b11);*/
+/*}*/
 
 
 
@@ -350,4 +398,8 @@ a {
 }
 .collapse.in{
   display:block !important;
+}
+
+.delete {
+    float: left;
 }

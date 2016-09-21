@@ -1,33 +1,33 @@
 <% include /partials/header %>
 
 <style>
-    body {
-        background: url(https://hd.unsplash.com/photo-1452693051753-f0acd4cfe723);
+    .overlay {
+        padding-top:15%;
+        background:url(https://hd.unsplash.com/22/brick-wall.JPG);
         background-size:cover;
+        opacity: 0.9;
     }
-    .sub-title {
-        font-size: 4em;
-    }
-    
+
 </style>
 
-<div class="container">
-    <div class="register-form">
-    <h1 class="sub-title">Sign Up!</h1>
-        <form action="/danger-zone">
+
+    <div class="overlay">
+        <div class="container text-left">
+        <form action="/register" method="post">
           <div class="form-group">
-            <label>Email</label>
-            <input type="email" class="form-control" placeholder="Email">
+            <label>Username</label>
+            <input type="text" class="form-control" name="username" placeholder="username">
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" class="form-control" name="password"placeholder="Password">
             <div class="row button-row">
-                <button class="btn btn-primary btn-lg btn-block">Sign Up!</button>
+                <button class="ui big button">Sign Up!</button>
             </div>
+          </div>
           </div>
         </form>
         </div>
-</div>
+
 
 <% include /partials/footer %>

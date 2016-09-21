@@ -1,0 +1,19 @@
+<% include /partials/header %>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1><%=article.title%></h1>
+    </div>
+    <p><%=article.body%></p>
+    <h2><%=article.flag%></h2>
+    <div class="row">
+        <a href="/articles/all/<%=article._id%>/edit"><button class="ui big blue button">Edit</button></a>
+        <a href="/articles/all"><button class="ui big blue button">Back</button></a>
+        <form method="post" action="/articles/all/<%=article._id%>?_method=DELETE" class="pull-right">
+                 <button class="ui big red button">Delete</button>
+        </form>
+    </div>
+</div>
+
+
+<% include /partials/footer %>

@@ -1,26 +1,58 @@
 <% include /partials/header %>
 
+<style>
+    .col-md-4 {
+        padding: 0;
+    }
+    
+    .overlay {
+        padding-top:100px;
+        background:transparent;
+        opacity:.8;
+    }
+    
+</style>
+
 <div class="article-header">
     <div class="overlay">
 
-
-            <div class="article-container">
-                <a href="/articles/weightlifting"><img class="article-image" src="https://hd.unsplash.com/photo-1434754205268-ad3b5f549b11"></a>
-
-            </div>
-
-
-            <div class="article-container">
-                <div class="articles-overlay">
-                     <a href="/articles/cardio"><img class="article-image" src="https://hd.unsplash.com/photo-1466761366829-84fd59a22e0b"></a>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="article-container weightlifting">
+                       <div class="article-overlay">
+                        Weightlifting 
+                            <div class="row">
+                                <a href="/articles/weightlifting"><button class="ui inverted massive button">Go</button></a>
+                            </div>
+                        </div>
                 </div>
             </div>
-
-
-            <div class="article-container">
-                 <a href="/articles/nutrition"><img class="article-image" src="https://hd.unsplash.com/photo-1437750769465-301382cdf094"></a>
-
+            
+            <div class="col-md-4">
+                <div class="article-container cardio">
+                     <div class="article-overlay">
+                        Cardio
+                            <div class="row">
+                                <a href="/articles/cardio"><button class="ui inverted massive button">Go</button></a>
+                            </div>
+                    </div>
+                </div>
             </div>
+            
+            <div class="col-md-4">
+                <div class="article-container nutrition">
+                     <div class="article-overlay">
+                        Nutrition
+                            <div class="row">
+                                <a href="/articles/nutrition"><button class="ui inverted massive button">Go</button></a>
+                            </div>
+                    </div>
+                    <!--<a href="/articles/nutrition"><img class="article-image" src="https://hd.unsplash.com/photo-1437750769465-301382cdf094"></a>-->
+                </div>
+            </div>
+            
+        </div>
+           
 
     </div>
 </div>
