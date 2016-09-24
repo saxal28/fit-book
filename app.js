@@ -8,9 +8,15 @@ var express =require("express");
 var passport = require('passport');
 var LocalStrategy = require("passport-local");
 var User = require("./models/user");
+var Article = require("./models/articles");
+var Recipe = require("./models/recipes");
+var Comment = require("./models/comments");
+var seedDB = require("./seeds");
 var app = express();
 
 
+
+// seedDB();
 //local database
 // mongoose.connect("mongodb://localhost/fit-book");
 
@@ -23,57 +29,6 @@ app.use(express.static(__dirname+"/public"));
 
 app.set("view engine", "ejs");
 
-//=======================
-// DB SETUP
-//=======================
-
-//SCHEMAS
-var recipeSchema = new mongoose.Schema ({
-    title: String,
-    image: String,
-    summary: String,
-    ingredients: String,
-    instructions: String,
-    calories: String,
-    carb: String,
-    protein: String,
-    fat: String
-});
-
-var articleSchema = new mongoose.Schema({
-    title: String,
-    image: String,
-    flag: String,
-    summary: String,
-    body: String
-})
-
-//MODELS
-var Recipe = mongoose.model("Recipe", recipeSchema);
-var Article = mongoose.model("Article", articleSchema);
-
-// //CREATE RECIPE && CREATE ARTICLE
-// Recipe.create({
-//     title: "Protein Pancakes",
-//     image: "https://hd.unsplash.com/photo-1462188769884-495d009c7f03",
-//     instructions: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-//     calories: "800",
-//     carb: "60",
-//     protein: "45",
-//     fat: "3"
-// }, function() {
-//     console.log("created recipe!");
-// });
-
-// Article.create({
-//     title: "Article Example",
-//     image: "http://images.wisegeek.com/barbell-with-weights.jpg",
-//     flag: "Weightlifting",
-//     summary: "An article about weightlifting",
-//     body: "Succulents gentrify small batch poutine chicharrones intelligentsia, cornhole pork belly butcher pitchfork paleo banjo fam. Raclette woke succulents dreamcatcher, cred gochujang food truck small batch readymade. Lumbersexual occupy pour-over lomo pickled, kale chips succulents biodiesel waistcoat microdosing pop-up whatever. Lyft craft beer plaid DIY. Godard gluten-free keytar mixtape tote bag typewriter. Lo-fi succulents messenger bag, farm-to-table pabst waistcoat lomo. Aesthetic four loko 8-bit cronut semiotics banjo."
-// }, function() {
-//     console.log("created article!")
-// })
 
 // passport configuration
 app.use(require("express-session") ({
@@ -184,6 +139,10 @@ app.get("/articles/all/new", function(req, res) {
 //-------------------------CREATE ROUTES-------------------------------
 //=====================================================================
 
+//============================
+//CREATE ROUTE => RECIPES
+//============================
+
 app.post("/recipes", function(req, res) {
     Recipe.create(req.body.recipe, function(err, createdRecipe) {
         if(err){
@@ -194,6 +153,10 @@ app.post("/recipes", function(req, res) {
         }
     });
 });
+
+//============================
+//CREATE ROUTE > ARTICLES
+//============================
 
 app.post("/articles/all", function(req, res) {
     Article.create(req.body.article, function(err, createdArticle) {
@@ -227,11 +190,16 @@ app.get("/recipes/:id", function(req, res) {
     });
 });
 
+//============================
+//SHOW ROUTE => ARTICLES
+//============================
+
 app.get("/articles/all/:id", function(req, res) {
     Article.findById(req.params.id, function(err, article) {
         if(err) {
             console.log(err);
         } else {
+            
             res.render("articles/show", {article: article});
         }
     });
@@ -332,6 +300,47 @@ app.delete("/articles/all/:id", function(req, res) {
             res.redirect("/articles/all")
         }
     })
+});
+
+//=====================================================================
+//---------------------COMMENTS ROUTES--------------------------------
+//=====================================================================
+
+app.get("/articles/all/:id/comments/new", function(req, res) {
+    //find campground by id
+    Article.findById(req.params.id, function(err, article) {
+        if(err) {
+            console.log(err);
+        } else {
+             res.render("comments/new", {article:article})
+        }
+    });
+});
+
+app.post("/articles/all/:id/comments", function(req, res) {
+    //lookup article by id
+    Article.findById(req.params.id, function(err, article) {
+        if(err) {
+            console.log(err);
+            res.redirect("/articles/all");
+        } else {
+            //create new comment
+            Comment.create(req.body.comment, function(err, comment) {
+                if(err) {
+                    console.log(err);
+                } else {
+                    //connect new comment to article
+                    article.comments.push(comment);
+                    article.save();
+                    //redirect back to article
+                    res.redirect("/articles/all/"+req.params.id)
+                }
+            })
+            
+        }
+    })
+    
+    
 })
 
 //=====================================================================
@@ -368,13 +377,19 @@ app.post("/login", passport.authenticate("local",
     successRedirect: "/recipes",
     failureRedirect: "/login"
     }),  function(req, res) {
-})
+});
 
 //logout route
 app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");
-})
+});
+
+function isLoggedIn(req, res, next) {
+    if(req.isAuthenticated()) {
+        return next();
+    }
+}
 
 //=========================
 //server listener

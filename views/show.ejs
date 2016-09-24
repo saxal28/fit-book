@@ -14,74 +14,74 @@
          padding-top: 12%;
     }
     
-    .fa {
-        font-size: 30px;
-    }
-    
-    .button.circular{
-        background:transparent;
-    }
-    
-    .button.circular:hover {
-        color:orange;
-        background:transparent;
-    }
     
     .btn-row {
         margin-bottom: 40px;
+    }
+    
+    .container {
+        background:url(http://wallpaperlayer.com/img/2015/9/vintage-paper-wallpaper-3126-3326-hd-wallpapers.jpg);
+        border:1px solid black;
     }
 </style>
 
 <div class="index-header">
     <div class="overlay">
-    <%=recipe.title%>
+    <h1><%=recipe.title%></h1>
+    <h2><small><%=recipe.summary%></small></h2>
     </div>
 </div>
 
-<div class="container">
+<div class="container content-container text-center">
     
-     <div class="row text-center btn-row">
+     <div class="rowr btn-row text-left">
         <a href="/recipes">
-             <button class="circular ui icon button pull-left">
+             <button class="circular ui icon button">
                   <i class="fa fa-arrow-left" aria-hidden="true"></i> 
              </button>
         </a>
         <a href="/recipes/<%=recipe._id %>/edit">
-            <button class="circular ui icon button pull-right">
+            <button class="circular ui icon button">
               <i class="fa fa-pencil" aria-hidden="true"></i>
              </button>
         </a>
+        <form method="post" action="/recipes/<%=recipe._id%>?_method=DELETE" class="pull-right">
+            <button class="circular ui icon button"><i class="fa fa-times" aria-hidden="true"></i></button>
+        </form>
 
 
     </div>
 
     
     <div class="row">
-        <div class="col-md-4 well">
-            <ul><h2 class="text-center">Nutrition</h2>
-                <li>Calories: <%=recipe.calories%></li>
+        <div class="col-md-4">
+            <ul><h2>Nutrition</h2>
+                <l>Calories: <%=recipe.calories%></li>
                 <li>Carbs:  <%=recipe.carb%></li>
                 <li>Protein:  <%=recipe.protein%></li>
                 <li>Fat  <%=recipe.fat%></li>
             </ul>
         </div>
-        <div class="col-md-4 well">
-            <h2 class="text-center">Shopping List</h2>
+        <div class="col-md-4">
+            <h2>Shopping List</h2>
         </div>
-         <div class="col-md-4 well">
+         <div class="col-md-4">
             <h2 class="text-center">Prep Time</h2>
         </div>
-        <div class="col-md-12 well">
+        <div class="col-md-12">
             <h2 class="text-center">Instructions</h2>
-                <p>Kitsch polaroid mustache offal, williamsburg health goth pug sustainable cardigan vinyl messenger bag selfies organic. Man braid humblebrag semiotics selvage kinfolk distillery, mumblecore ennui. Scenester everyday carry butcher, kogi sriracha heirloom chartreuse humblebrag locavore health goth. Freegan pour-over organic fingerstache cliche migas. Organic swag post-ironic quinoa squid. Neutra chicharrones street art heirloom. Green juice wayfarers echo park swag, beard kickstarter sustainable messenger bag tilde craft beer.</p>
+                <ol>
+                    <li><%=recipe.step1%></li>
+                    <li><%=recipe.step2%></li>
+                    <li><%=recipe.step3%></li>
+                    <li><%=recipe.step4%></li>
+                    <li><%=recipe.step5%></li>
+                    <li><%=recipe.step6%></li>
+                    <li><%=recipe.step7%></li>
+                </ol>
         </div>
     </div>
     
-    <div class="row text-center">
-        <form method="post" action="/recipes/<%=recipe._id%>?_method=DELETE">
-            <button class="btn btn-danger">Delete</button>
-        </form>
-    </div>
 </div>
 
 

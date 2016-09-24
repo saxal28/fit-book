@@ -20,3 +20,9 @@ $(".nutrition").hover(function() {
 }, function() {
     $(this).children().fadeOut();
 });
+
+$(".all-articles").hover(function() {
+    $(this).children().fadeIn();
+}, function() {
+    $(this).children().fadeOut();
+});

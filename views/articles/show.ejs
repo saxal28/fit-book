@@ -1,18 +1,55 @@
 <% include /partials/header %>
 
-<div class="container">
+<div class="container content-container">
     <div class="jumbotron">
         <h1><%=article.title%></h1>
     </div>
-    <p><%=article.body%></p>
-    <h2><%=article.flag%></h2>
+    
+    <%-article.body%>
+
     <div class="row">
-        <a href="/articles/all/<%=article._id%>/edit"><button class="ui big blue button">Edit</button></a>
-        <a href="/articles/all"><button class="ui big blue button">Back</button></a>
+        <a href="/articles/all"><button class="circular ui icon button"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
+        <a href="/articles/all/<%=article._id%>/edit"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
         <form method="post" action="/articles/all/<%=article._id%>?_method=DELETE" class="pull-right">
-                 <button class="ui big red button">Delete</button>
+                 <button class="circular ui icon button"><i class="fa fa-times" aria-hidden="true"></i></button>
         </form>
     </div>
+        <div class="ui comments">
+          <h3 class="ui dividing header">Comments</h3>
+
+        <div class="row">
+            <a href="/articles/all/<%=article.id%>/comments/new"><button class="ui big red button">Add Comment</button></a>
+        </div>
+        
+        
+        
+        <div class="comment-container">
+        
+        <% article.comments.forEach(function(comment) { %>
+        
+                  <div class="comment">
+                    <a class="avatar">
+                      <img src="http://assets.nydailynews.com/polopoly_fs/1.2654880.1464639106!/img/httpImage/image.jpg_gen/derivatives/article_750/552448316.jpg">
+                    </a>
+                    <div class="content">
+                      <span class="author"><%= comment.author%></span>
+                      <div class="metadata">
+                        <span class="date">Today</span>
+                      </div>
+                      <div class="text">
+                        <%=comment.text%>
+                      </div>
+                      <div class="actions">
+                        <a class="reply">Reply</a>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+        
+            <!--<p><strong></strong> - </p>-->
+        <% }) %>
+        </div>
+
 </div>
 
 

@@ -2,7 +2,7 @@
 
 <style>
     .overlay {
-        padding:50px;
+        padding-top:50px;
         background:url(https://hd.unsplash.com/22/brick-wall.JPG);
         background-size:cover;
         opacity: 0.9;
@@ -12,7 +12,6 @@
 
 <div class="overlay">
     <div class="container text-left">
-  
     <form method="post" action="/articles/all">
       <div class="row">
 
@@ -23,8 +22,8 @@
 
 
         <div class="form-group">
-            <label>Category</label>
-        <select class="selectpicker">
+            <label>Category</label><br>
+        <select class="selectpicker" name="article[flag]">
             <option>Weightlifting</option>
             <option>Cardio</option>
             <option>Nutrition</option>
@@ -44,7 +43,7 @@
             </div>
 
         <div class="row">
-             <button class="ui inverted large button">Create!</button>
+             <button class="ui large button">Create!</button>
         </div>
         
         

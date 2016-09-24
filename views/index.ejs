@@ -8,32 +8,40 @@
         <div class="row">
              <a href="/recipes/new"><button class="ui inverted massive orange button">New Recipe</button></a> 
         </div>
-      
+        
 
     </div>
 </div>
 
-<div class="card-columns">
+<div class="container">
+
+<div class="ui divided items">
+  
 
 <% recipes.forEach(function(recipe) { %>
      
-     <div class="card">
-        <div class="card-block">
-            <h2><%= recipe.title %></h2>
-            <img class="tiny" src="<%= recipe.image %>">
+     <div class="item">
+    <div class="image">
+      <img src="<%= recipe.image %>">
+    </div>
+    <div class="content">
+      <a class="header"><%= recipe.title %></a>
+      <div class="meta">
+        <span><%=recipe.summary%></span>
+      </div>
+      <div class="description">
+        <p></p>
+      </div>
+      <div class="extra">
+        <p>Calories: <%= recipe.calories %>, Carbs: <%=recipe.carb%>, Protein: <%=recipe.protein%></p>
+        <a href="/recipes/<%=recipe._id%>"><button class="ui mini orange button"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+      </div>
+    </div>
+  </div>
 
-            <a href="/recipes/<%=recipe._id%>">link</a>
-        </div> 
-    </div>
-        
-            
-            
-            
-        </div>
-    </div>
         
 <% }); %>
 
 </div>
-
+</div>
 <% include /partials/footer %>

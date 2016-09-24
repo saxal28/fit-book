@@ -2,12 +2,17 @@
 
 
 <div class="weightlifting-header">
-    <h1 class="sub-title">All Articles</h1>
+    <div class="overlay">
+      All Articles
+      <div class="row">
+        <a href="/articles/all/new"><button class="ui massive inverted orange button">Add Article</button></a>
+      </div>
+    </div>
 </div>
 
 <div class="container well">
     
-    <div class="ui items">
+    <div class="ui divided items">
     
     <% article.forEach(function(article) { %>
     
@@ -16,12 +21,12 @@
               <img src="http://leanmuscleproject.com/wp-content/uploads/2015/11/barbell.jpg">
             </div>
             <div class="content">
-                <a class="header"><%= article.title %></a>
+                <a class="header"><%= article.title %> -- <small><%=article.flag%></small></a>
                 <div class="meta">
                   <span><%= article.summary %></span>
                 </div>
                 <div class="description">
-                    <p><%= article.body%></p>
+                    <p><%- article.body%></p>
                 </div>
                 <div class="extra">
                     <a href="/articles/all/<%=article._id%>"><button class="ui mini orange button"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>

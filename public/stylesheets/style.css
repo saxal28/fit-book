@@ -1,5 +1,9 @@
 body {
-    background: #dddddd;
+    /*background: #dddddd;*/
+}
+
+p {
+    text-indent: 30px;
 }
 
 
@@ -69,7 +73,6 @@ body {
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
     font-size: 3em;
     margin-bottom: 50px
 }
@@ -82,7 +85,6 @@ body {
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
     font-size: 3em;
     margin-bottom: 50px
 }
@@ -95,7 +97,6 @@ body {
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
     font-size: 3em;
     margin-bottom: 50px
 }
@@ -107,7 +108,6 @@ body {
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;
     font-size: 3em;
 
 }
@@ -163,7 +163,7 @@ h1 {
 .weightlifting {
     background:orange;
     width: 100%;
-    height: 400px;
+    height: 300px;
     background:url(https://hd.unsplash.com/photo-1457393568996-e452740c8346);
     background-size:cover;
     background-position: center;
@@ -172,7 +172,7 @@ h1 {
 .cardio {
     background:yellow;
     width: 100%;
-    height: 400px;
+    height: 300px;
     background:url(https://hd.unsplash.com/photo-1466761366829-84fd59a22e0b);
     background-size:cover;
     background-position: center;
@@ -181,14 +181,23 @@ h1 {
 .nutrition {
     background:red;
     width: 100%;
-    height: 400px;
+    height: 300px;
     background:url(https://hd.unsplash.com/photo-1437750769465-301382cdf094);
     background-size:cover;
     background-position: center;
 }
 
+.all-articles {
+    background:red;
+    width: 100%;
+    height: 300px;
+    background:url(https://hd.unsplash.com/photo-1464692805480-a69dfaafdb0d);
+    background-size:cover;
+    background-position: center;
+}
+
 .article-overlay {
-    padding-top:20%;
+    padding-top:40px;
     text-align:center;
     background: orange;
     opacity: 0.8;
@@ -252,16 +261,14 @@ span {
 
 
 .form-group {
-    width: 400px;
+    width: 50%;
+    min-width:350px;
 }
 
 .button-row {
     margin: 20px auto;
 }
 
-.register-form {
-     padding-top: 17%;
-}
 
 label {
     font-size: 18px;
@@ -342,7 +349,7 @@ a {
 }
 
 .selectpicker {
-    width: 400px;
+    width: 350px;
     background:black;
     font-size: 17px;
     padding: 5px;
@@ -350,17 +357,83 @@ a {
 }
 
 .form-control {
-    width: 400px;
+    width: 350px;
+    min-width:350px;
     background:black;
     color:white;
-    
+}
+
+/*styling for nutrition labels*/
+.nutrition-label {
+  width: auto;
+  min-width:auto;
+  height:auto;
+  background:white;
+  border:1px solid black;
+  margin-top:20px;
+  padding:10px;
+  float:left;
+  margin:auto;
+  margin-right:20px;
 }
 
 
+body, html {
+  height: 100%;
+}
 
-/*.weightlifting {*/
-/*    background:url(https://hd.unsplash.com/photo-1434754205268-ad3b5f549b11);*/
-/*}*/
+hr {
+  color:black;
+  margin:10px;
+  width:220px;
+}
+.number {
+  width:50px;
+  height:100%;
+  display:inline;
+  margin-left:20px;
+  padding-left:5px;
+  border:none;
+  color:gray;
+  font-size:14px;
+  height:45px;
+}
+
+.text {
+  width:150px;
+  height:35px;
+  margin-left:20px;
+  padding-left:5px;
+  margin-top:10px;
+  border:none;
+   font-size:14px;
+   color:gray;
+}
+
+.fa-arrow-left, .fa-pencil, .fa-times {
+    font-size: 30px;
+}
+    
+.button.circular.ui.icon.button{
+    background:transparent;
+}
+    
+.button.circular:hover {
+    color:orange;
+    background:transparent;
+}
+
+.content-container {
+    padding-left:13%;
+    padding-right: 13%;
+    padding-top:50px;
+}
+
+.comment-container {
+    padding-top:50px;
+    padding-left:5%;
+    padding-right:5%;
+}
 
 
 

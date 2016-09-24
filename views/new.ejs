@@ -1,61 +1,132 @@
 <% include /partials/header %>
 
-<h1 class="page-header">New Recipe</h1>
+<style>
+    .overlay {
+        padding-top:50px;
+        background:url(https://hd.unsplash.com/22/brick-wall.JPG);
+        background-size:cover;
+        opacity: 0.8;
+        
+    }
+    label, h2, h3 {
+        color:black;
+    }
+    .row {
+        height:60px;
+    }
+    
+    label {
+        font-size:16px;
+    }
 
-<div class="container">
+</style>
+
+
+<div class="overlay">
+
+    <div class="container text-left">
   
     <form method="post" action="/recipes">
-      <div class="row">
-            <div class="col-md-6">
-                 <div class="form-group">
-                    <label>Title</label>
-                    <input type="text" class="form-control" placeholder="title" name="recipe[title]">
-                  </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                  <label>Image Link</label>
-                  <input type="text" class="form-control" placeholder="image url" name ="recipe[image]">
-                </div>
-            </div>
+       <div class="container">
+  <div class="nutrition-label">    
+    <div class="row">
+      <h2>Recipe</h2>
+      <hr>
     </div>
-       
-        <label>Comments</label>
-       <textarea class="form-control" rows="15" placeholder="type comments/information/instructions here......" name="recipe[instructions]"></textarea>
-       
-        <div class="row macros">
-            <div class="col-md-3">
-               <div class="form-group">
-                  <label>Calories</label>
-                  <input type="text" class="form-control" placeholder="per serving" name="recipe[calories]">
-                </div>
-            </div>
-             <div class="col-md-3">
-                <div class="form-group">
-                  <label>Carbohydrates</label>
-                  <input type="text" class="form-control" placeholder="grams per serving" name="recipe[carb]">
-                </div>
-            </div>
-             <div class="col-md-3">
-                <div class="form-group">
-                  <label >Protein</label>
-                  <input type="text" class="form-control" placeholder="grams per serving" name="recipe[protein]">
-                </div>
-            </div>
-             <div class="col-md-3">
-                <div class="form-group">
-                  <label>Fat</label>
-                  <input type="text" class="form-control" placeholder="grams per serving" name="recipe[fat]">
-              </div>
-            </div>
-
+    <div class="row">
+      <label>Title</label>
+      <input type="text" class="text pull-right" placeholder="quirky title here"name="recipe[title]">
+      <hr>
+    </div>
+    <div class="row">
+      <label>Image</label>
+      <input type="text" class="text pull-right" placeholder="link to image" name="recipe[image]">
+      <hr>
+    </div>
+    <div class="row">
+      <label>Summary</label>
+      <input type="text" class="text pull-right" placeholder="one sentence summary" name="recipe[summary]">
+      <hr>
+    </div>
+    <div class="row">
+      <h3>Nutrition Facts</h3>
+      <hr>
+    </div>
+    <div class="row">
+      <label>Calories</label>
+      <input type="text" class="number pull-right" placeholder="0" name="recipe[calories]">
+      <hr>
+    </div>
+    <div class="row">
+      <label>Carbs</label>
+      <input type="number" class="number pull-right" placeholder="0"name="recipe[carb]">
+      <hr>
+    </div>
+    <div class="row">
+      <label>Protein</label>
+      <input type="number" class="number pull-right" placeholder="0"name="recipe[protein]">
+      <hr>
+    </div>
+    <div class="row">
+      <label>Fat</label>
+      <input type="number" class="number pull-right" placeholder="0"name="recipe[fat]">
+      <hr>
+    </div>
+  </div>
   
-        </div>
-        <div class="row">
-             <button class="btn btn-primary btn-lg btn-block">Create!</button>
+<!--   this is a test -->
+  <div class="nutrition-label">
+    <div class="row">
+      <h2>Instructions</h2>
+      <hr>
+    </div>
+    <div class="row">
+      <label>Step 1</label>
+      <input type="text" class="text pull-right" placeholder="steps here" name="recipe[step1]">
+      <hr>
+    </div>
+    <div class="row">
+      <label>Step 2</label>
+      <input type="text" class="text pull-right" placeholder="steps here" name="recipe[step2]">
+      <hr>
+    </div>
+    <div class="row">
+      <label>Step 3</label>
+      <input type="text" class="text pull-right" placeholder="steps here" name="recipe[step3]">
+      <hr>
+    </div>
+    <div class="row">
+      <label>Step 4</label>
+      <input type="text" class="text pull-right" placeholder="steps here" name="recipe[step4]">
+      <hr>
+    </div>
+    <div class="row">
+      <label>Step 5</label>
+      <input type="text" class="text pull-right" placeholder="steps here" name="recipe[step5]">
+      <hr>
+    </div>
+    <div class="row">
+      <label>Step 6</label>
+      <input type="text" class="text pull-right" placeholder="steps here" name="recipe[step6]">
+      <hr>
+    </div>
+    <div class="row">
+      <label>Step 7</label>
+      <input type="text" class="text pull-right" placeholder="steps here" name="recipe[step7]">
+      <hr>
+    </div>
+
+    </div>
+  
+  
+  
+  
+</div>
+        <button class="ui big blue button">Create!</button>
         </div>
        
 </form>
+</div>
 </div>
 
 <% include /partials/footer %>
