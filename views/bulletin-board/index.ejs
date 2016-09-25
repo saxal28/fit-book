@@ -1,0 +1,67 @@
+<% include ../partials/header %>
+
+<h1 class="text-center">This is the bulletin board</h1>
+
+<div class="row">
+<a href="/articles/all/new"><button class="circular ui icon button"><i class="fa fa-plus" aria-hidden="true" id="new-article"></i> Add an Article</button></a>
+<a href="/recipes/new"><button class="circular ui icon button"><i class="fa fa-plus" id="new-recipe" aria-hidden="true"></i> Add a Recipe</button></a>
+</div>
+
+<div class="row text-center">
+
+<% article.forEach(function(article) { %>
+
+<div class="col-md-4">
+
+
+<div class="thumbnail">
+      <div class="thumbnail-image">
+          <div class="overlay">
+              <div class="row">
+                  <i class="fa fa-heart" aria-hidden="true"></i>
+              </div>
+          </div>
+      </div>
+        <h3><%=article.title%></h3>
+        <p><%=article.summary%></p>
+        <div class="row">
+             <a href="/articles/all/<%=article._id%>"><button class="circular ui icon button"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
+             <a href="/articles/all/new"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+        </div>
+       
+      </div>
+    </div>
+    
+
+<% }) %>
+
+<% recipe.forEach(function(recipe) { %>
+
+<div class="col-md-4">
+
+<!--recipes-->
+<div class="thumbnail">
+      <div class="thumbnail-image">
+          <div class="overlay">
+              <div class="row">
+                  <i class="fa fa-heart" aria-hidden="true"></i>
+              </div>
+          </div>
+      </div>
+      <div class="caption">
+        <h3><%=recipe.title%></h3>
+        <p><%=recipe.summary%></p>
+        <div class="row">
+             <a href="/recipes/<%=recipe._id%>"><button class="circular ui icon button"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
+             <a href="/articles/all/new"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+
+<% }) %>
+
+</div>
+
+<%include ../partials/footer%>

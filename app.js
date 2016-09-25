@@ -85,17 +85,6 @@ app.get("/recipes-of-the-month", function(req, res) {
 app.get("/articles", function(req, res) {
     res.render("articles/index");
 })
-app.get("/articles/weightlifting", function(req, res) {
-    res.render("articles/weightlifting")
-})
-
-app.get("/articles/cardio", function(req, res) {
-    res.render("articles/cardio")
-})
-
-app.get("/articles/nutrition", function(req, res) {
-    res.render("articles/nutrition")
-})
 
 app.get("/articles/all", function(req, res) {
     Article.find({}, function(err, foundArticle) {
@@ -107,6 +96,28 @@ app.get("/articles/all", function(req, res) {
     })
     
 })
+
+//==============================
+//INDEX ROUTE => BULLETIN BOARD
+//==============================
+
+app.get("/bulletin-board", function(req, res) {
+    Article.find({}, function(err, article) {
+        if(err) {
+            console.log(err);
+        } else {
+            Recipe.find({}, function(err, recipe) {
+                if(err) {
+                    console.log(err)
+                } else {
+                    res.render("bulletin-board/index", {article:article, recipe:recipe})
+                }
+            })
+        }
+    });
+
+    
+});
 
 //============================
 //INDEX ROUTE => DANGER ZONE

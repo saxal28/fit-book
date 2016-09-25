@@ -2,7 +2,7 @@ body {
     /*background: #dddddd;*/
 }
 
-p {
+.p-indent {
     text-indent: 30px;
 }
 
@@ -11,10 +11,15 @@ p {
     width: 100%;
     float: left;
     margin: 5px;
-    border: none;
     padding: 0px;
 }
 
+.thumbnail-image {
+    width:100%;
+    height:200px;
+    background:url(http://rs1215.pbsrc.com/albums/cc506/Rockingbro/170422_dancing_banana.gif~c200);
+    background-size:cover;
+}
 .home-header {
     background: url(https://hd.unsplash.com/photo-1471477985614-a55f7db053db);
     background-attachment: fixed;
@@ -410,8 +415,13 @@ hr {
    color:gray;
 }
 
-.fa-arrow-left, .fa-pencil, .fa-times {
+.fa-arrow-left, .fa-pencil, .fa-times, .fa-eye {
     font-size: 30px;
+}
+
+.fa-plus {
+    font-size:30px;
+    color:red;
 }
     
 .button.circular.ui.icon.button{
