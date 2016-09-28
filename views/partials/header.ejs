@@ -13,6 +13,7 @@
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/item.min.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/reveal.min.css" />
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/comment.min.css" />
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/components/segment.min.css" />
     </head>
     <body>
         
@@ -28,27 +29,27 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/">Fit <i class="fa fa-cutlery" aria-hidden="true"></i> Book</a>
+              <a class="navbar-brand" href="/">Fit Book</a>
             </div>
         
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav">
                 <li><a href="/">Home</span></a></li>
-                <li><a href="/recipes">My Board</a></li>
+                <li><a href="/hq">My Board</a></li>
+                <!--<li><a href="/recipes">Recipes</a></li>-->
               </ul>
               <ul class="nav navbar-nav navbar-left">
-                <li><a href="/articles">Articles</a></li>
+                <!--<li><a href="/articles">Articles</a></li>-->
                 <li><a href="/bulletin-board">Bulletin Board</a></li>
               </ul>
                <ul class="nav navbar-nav navbar-right">
-                <li><a href="/register">Sign Up! <i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
-              </ul>
-               <ul class="nav navbar-nav navbar-right">
-                <li><a href="/login">Login! <i class="fa fa-user" aria-hidden="true"></i></a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="/logout">Logout! <i class="fa fa-user-times" aria-hidden="true"></i></a></li>
+                 <% if (!currentUser)  { %>
+                    <li><a href="/register">Sign Up! <i class="fa fa-user-plus" aria-hidden="true"></i></a></li>
+                    <li><a href="/login">Login! <i class="fa fa-user" aria-hidden="true"></i></a></li>
+                <% } else { %>
+                    <li><a href="/logout">Logout! <i class="fa fa-user-times" aria-hidden="true"></i></a></li>
+                <% } %>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->

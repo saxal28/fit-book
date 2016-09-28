@@ -3,8 +3,9 @@
 <style>
     .overlay {
         padding-top:15%;
-        background:url(https://hd.unsplash.com/22/brick-wall.JPG);
-        background-size:cover;
+        background: #f46b45; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #f46b45 , #eea849); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to left, #f46b45 , #eea849); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         opacity: 0.9;
     }
 
@@ -13,21 +14,31 @@
 
     <div class="overlay">
         <div class="container text-left">
-        <form action="/register" method="post">
-          <div class="form-group">
-            <label>Username</label>
-            <input type="text" class="form-control" name="username" placeholder="username">
-          </div>
-          <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password"placeholder="Password">
-            <div class="row button-row">
-                <button class="ui big button">Sign Up!</button>
+            <div class="row">
+                <div class="col-xs-6">
+                    <h1>Register Here!</h1>
+                    <form action="/register" method="post">
+                      <div class="form-group">
+                        <label>Username</label>
+                        <input type="text" class="form-control" name="username" placeholder="username">
+                      </div>
+                      <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" name="password"placeholder="Password">
+                        <div class="row button-row">
+                            <button class="ui big inverted button"style="margin-top: 20px">Sign Up!</button>
+                        </div>
+                      </div>
+                      </form>
+                      </div>
+                    
+                <div class="col-xs-6">
+                    <h1>Already Have An Account?</h1>
+                    <h3>What Are You Waiting For?!</h3>
+                    <a href="/login"><button class="ui big inverted button">Sign In</button></a>
+                </div>
             </div>
-          </div>
-          </div>
-        </form>
         </div>
-
+    </div>
 
 <% include /partials/footer %>

@@ -4,6 +4,7 @@ var recipeSchema = new mongoose.Schema ({
     title: String,
     image: String,
     summary: String,
+    prepTime: String,
     calories: String,
     carb: String,
     protein: String,
@@ -14,7 +15,15 @@ var recipeSchema = new mongoose.Schema ({
     step4: String,
     step5: String,
     step6: String,
-    step7: String
+    step7: String,
+    comments: ["commentsSchema"],
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            rel: "Recipe"
+        },
+        username: String
+    }
 });
 
 module.exports = mongoose.model("Recipe", recipeSchema);

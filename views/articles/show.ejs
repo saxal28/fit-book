@@ -3,16 +3,21 @@
 <div class="container content-container">
     <div class="jumbotron">
         <h1><%=article.title%></h1>
+        <h4 class="text-right"><em>Submitted By:  <%=article.author.username%></em></h4>
     </div>
     
     <%-article.body%>
 
     <div class="row">
-        <a href="/articles/all"><button class="circular ui icon button"><i class="fa fa-arrow-left" aria-hidden="true"></i></button></a>
-        <a href="/articles/all/<%=article._id%>/edit"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
-        <form method="post" action="/articles/all/<%=article._id%>?_method=DELETE" class="pull-right">
-                 <button class="circular ui icon button"><i class="fa fa-times" aria-hidden="true"></i></button>
-        </form>
+        <a href="/bulletin-board"><button class="circular ui icon button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</button></a>
+        
+        <!--if user owns article, edit and delete forms show-->
+        <% if(currentUser.username == article.author.username) { %>
+          <a href="/articles/all/<%=article._id%>/edit"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button></a>
+          <form method="post" action="/articles/all/<%=article._id%>?_method=DELETE" class="pull-right">
+                 <button class="circular ui icon button"><i class="fa fa-times" aria-hidden="true"></i> Delete</button>
+          </form>
+        <% } %>
     </div>
         <div class="ui comments">
           <h3 class="ui dividing header">Comments</h3>
@@ -29,10 +34,10 @@
         
                   <div class="comment">
                     <a class="avatar">
-                      <img src="http://assets.nydailynews.com/polopoly_fs/1.2654880.1464639106!/img/httpImage/image.jpg_gen/derivatives/article_750/552448316.jpg">
+                      <img src="https://pbs.twimg.com/profile_images/633817680286384128/TMHEs83b.jpg">
                     </a>
                     <div class="content">
-                      <span class="author"><%= comment.author%></span>
+                      <span class="author"><%= comment.author.username%></span>
                       <div class="metadata">
                         <span class="date">Today</span>
                       </div>
@@ -51,6 +56,9 @@
         </div>
 
 </div>
+
+<% console.log(article) %>
+
 
 
 <% include /partials/footer %>

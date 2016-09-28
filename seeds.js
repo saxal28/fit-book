@@ -12,34 +12,37 @@ var data = [
 
 function seedDB(){
     //remove all articles
+    Recipe.remove({}, function(err) {
+        console.log("all recipes removed")
+    })
     Article.remove({}, function(err) {
-        if(err) {
-            console.log(err);
-        }
+    //     if(err) {
+    //         console.log(err);
+    //     }
         console.log("removed articles!")
-    });
+    // });
     
-    //add some articles
-    data.forEach(function(item) {
-        Article.create(item, function(err, article) {
-            if(err) {
-                console.log(err)
-            } else {
-                console.log("added article!")
-                 //add article comments
-                Comment.create(
-                    {text:"This is great!", author:"Alan"}, 
-                    function(err, comment) {
-                        if(err){
-                            console.log(err);
-                        } else {
-                       article.comments.push(comment);
-                       article.save();
-                       console.log("Created new comment");
-                        }
-                });
-            }
-        });
+    // //add some articles
+    // data.forEach(function(item) {
+    //     Article.create(item, function(err, article) {
+    //         if(err) {
+    //             console.log(err)
+    //         } else {
+    //             console.log("added article!")
+    //              //add article comments
+    //             Comment.create(
+    //                 {text:"This is great!", author:"Alan"}, 
+    //                 function(err, comment) {
+    //                     if(err){
+    //                         console.log(err);
+    //                     } else {
+    //                   article.comments.push(comment);
+    //                   article.save();
+    //                   console.log("Created new comment");
+    //                     }
+    //             });
+    //         }
+    //     });
     });
 }
 

@@ -7,7 +7,18 @@ var articleSchema = new mongoose.Schema({
     flag: String,
     summary: String,
     body: String,
-    comments: ["commentSchema"]
+    favorited: Boolean,
+    disliked: Boolean,
+    liked: Boolean,
+    likes: 0,
+    comments: ["commentSchema"],
+    author: {
+        id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Article"
+        },
+        username: String
+    }
 })
 
 module.exports = mongoose.model("Article", articleSchema);

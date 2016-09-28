@@ -1,15 +1,119 @@
 <% include /partials/header %>
 
-<div class="home-header">
-   <div class="overlay">
-      <div class="row">
-           Fit <i class="fa fa-cutlery" aria-hidden="true"></i> Book
-       </div>
-       <div class="row">
-           <a href="/login"><button class="ui inverted massive button">Login</button></a>
-           <a href="/register"><button class="ui inverted massive button">Sign Up</button></a>
-       </div>
+<style>
+    body {
+       background:url(https://hd.unsplash.com/photo-1471549499848-34430c1eb730);
+       background-size:cover;
+       background-attachment:fixed;
+       background-position:bottom center
+    }
+    
+</style>
+
+
+
+<div class="home-header" style="background:transparent">
+   <div class="overlay" style="opacity:0.9">
+          <div class="row">
+               Fit <i class="fa fa-coffee" aria-hidden="true"></i> Book
+           </div>
+           <% if(!currentUser) { %>
+               <div class="row">
+                   <a href="/login"><button class="ui inverted massive button">Login</button></a>
+                   <a href="/register"><button class="ui inverted massive button">Sign Up</button></a>
+               </div>
+           <% } else { %>
+               <div class="row">
+                   <a href="/hq"><button class="ui inverted massive button">Dashboard</button></a>
+                   <a href="/bulletin-board"><button class="ui inverted massive button">Bulletin Board</button></a>
+               </div>
+           <% } %>
    </div>
 </div>
+
+<div class="jumbotron-content">
+    <div class="container text-center">
+            <h1>Hi, Welcome to FitBook</h1>
+            <h2>"What is Fitbook, and What Can I Do On Here?"</h2>
+            <h2>Lets Take The Tour</h2>
+    </div>
+</div>
+<div class="jumbotron-content" style="background:transparent; height:60%">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Create and Share Ideas, Articles, Tips, Recipes, and Motivation</h1>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <i class="fa fa-cutlery" aria-hidden="true"></i>
+                    <i class="fa fa-picture-o" aria-hidden="true"></i>
+                 </div>
+                 <div class="row">
+                    <i class="fa fa-trophy" aria-hidden="true"></i>
+                    <i class="fa fa-book" aria-hidden="true"></i>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-6">
+               <h1>Comment and Upvote your Favorite Bulletins!</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron-content"style="background:transparent;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+               <h1>Add Your Own Bulletins to the Bulletin Board!</h1>
+            </div>
+            <div class="col-md-6">
+                <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+                <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <i class="fa fa-heart-o" aria-hidden="true"></i>
+                <i class="fa fa-tachometer" aria-hidden="true"></i>
+            </div>
+            <div class="col-md-6">
+                <h1>Send Your Favorite Bulletins to HeadQuarters!</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="home-footer" style=background:transparent>
+    <div class="container">
+        <div class="row">
+            <h1>Let's Get Started.</h1>
+        </div>
+        <div class="row" style="padding-top: 30px">
+               <a href="/hq"><button class="ui inverted massive button">Go to HQ</button></a>
+               <a href="/bulletin-board"><button class="ui inverted massive button">Go to the Bulletin Board</button></a>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 <% include /partials/footer %> 

@@ -1,10 +1,10 @@
-<% include ../partials/header%>
+<% include ../../partials/header%>
 
 <div class="container">
     <div class="jumbotron text-center">
-        <h1>Add Comment to <%=article.title%></h1>
+        <h1>Add Comment to <%=recipe.title%></h1>
     </div>
-    <form method="post" action="/articles/all/<%=article.id%>/comments">
+    <form method="post" action="/recipes/<%=recipe.id%>/comments">
         <label>Text</label>
             <input type="text" name="comment[text]">
         <button>Post</button>
@@ -12,4 +12,4 @@
 </div>
 
 
-<% include ../partials/footer%>
+<% include ../../partials/footer%>

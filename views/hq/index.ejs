@@ -1,0 +1,76 @@
+<% include ../partials/header%>
+
+<div class="jumbotron">
+        <h1>HQ</h1>
+        <h3>Your Stickied Content is Saved Here!</h3>
+        <a href="/bulletin-board"><button class="ui huge inverted button"style="margin-top: 30px">Visit The Bulletin Board</button></a>
+    </div>
+
+<div class="container text-center">
+    
+    <div class="row">
+        <div class="col-md-6">
+            <h1 style="padding-top: 30px">My Articles</h1>
+            <hr>
+            
+            <% article.forEach(function(article) { %>
+            
+            <!--checks to see if article author and current user match-->
+            <% if (article.author.username == currentUser.username ) { %>
+            
+              <div class="ui raised segment">
+                  <h3><%=article.title%></h3>
+                  <p><%=article.summary%></p>
+                   <div class="row text-right">
+                     <a href="/articles/all/<%=article._id%>"><button class="circular ui icon button"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                     <a href="/articles/all/<%=article._id%>/edit"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button></a>
+                    </div>
+              </div>
+              
+              <% }; %>
+              
+            <% }); %>
+        </div>
+        <div class="col-md-6">
+            <h1 style="padding-top: 30px">My Recipes</h1>
+            <hr>
+            
+                <%recipe.forEach(function(recipe) { %>
+                
+                <!--checks to see if current user is the author of recipe-->
+                <% if (recipe.author.username == currentUser.username ) { %>
+                
+                <div class="ui raised segment">
+                    <h3><%=recipe.title%></h3>
+                    <p><%=recipe.summary%></p>
+                    <!--<img src='<%=recipe.image%>' class="img-responsive">-->
+                    <div class="row text-right">
+                        <a href="/recipes/<%=recipe._id%>"><button class="circular ui icon button"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                        <a href="/recipes/<%=recipe._id%>/edit"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button></a>
+                    </div>
+                </div>
+                
+                <% } %>
+                
+                <% }); %>
+
+        </div>
+    </div>
+    
+    <!--<div class="row">-->
+    <!--    <div class="col-md-12">-->
+    <!--        <h1 style="padding-top: 30px">Saved Bulletins</h1>-->
+            
+    <!--        <%currentUser.favorited.forEach(function(favorite) { %>-->
+    <!--                <div class="ui raised segment">-->
+    <!--                    <p><%=favorite%></p>-->
+    <!--                </div>-->
+    <!--        <% })%>-->
+    <!--    </div>-->
+    <!--</div>-->
+</div>
+
+
+
+
+<% include ../partials/header%>

@@ -1,10 +1,27 @@
 <% include ../partials/header %>
 
-<h1 class="text-center">This is the bulletin board</h1>
+<style>
+    .row {
+        padding-right:15px;
+    }
+    
+    .overlay {
+        padding-top:8%;
+    }
+</style>
+
+<div class="jumbotron">
+    <h1>Bulletin Board</h1>
+    <h3>Post Bulletins or Snag other Bulletins and add them to Your Board!</h3>
+    <a href="/hq"><button class="ui huge inverted button" style="margin-top: 30px">Go to HQ</button></a>
+</div>
 
 <div class="row">
 <a href="/articles/all/new"><button class="circular ui icon button"><i class="fa fa-plus" aria-hidden="true" id="new-article"></i> Add an Article</button></a>
 <a href="/recipes/new"><button class="circular ui icon button"><i class="fa fa-plus" id="new-recipe" aria-hidden="true"></i> Add a Recipe</button></a>
+<a href="/articles/all/new"><button class="circular ui icon button"><i class="fa fa-plus" aria-hidden="true" id="new-article"></i> Add an Idea</button></a>
+<a href="/articles/all/new"><button class="circular ui icon button"><i class="fa fa-plus" aria-hidden="true" id="new-article"></i> Add Movitation</button></a>
+
 </div>
 
 <div class="row text-center">
@@ -12,39 +29,86 @@
 <% article.forEach(function(article) { %>
 
 <div class="col-md-4">
+    
 
-
-<div class="thumbnail">
+    
+<div class="thumbnail" style="background:#f9d581">
       <div class="thumbnail-image">
-          <div class="overlay">
-              <div class="row">
-                  <i class="fa fa-heart" aria-hidden="true"></i>
+          <div class="overlay bulletin">
+              <div class="row text-right">
+                  
+                <button class="ui circular icon button"><i class="fa fa-heart favorite" aria-hidden="true"></i></button>
+                
+                <!--favorite button logic -->
+                <% if (article.favorited == false) { %>
+                    <script>
+                        $(".favorite").on("click", function() {
+                            
+                            $(this).css("color","yellow");
+                            <% currentUser.favorited.push("test") %>
+                            <% currentUser.save() %>
+                            <% article.favorited = true %>
+                            <% article.save() %>
+                        })
+                    </script>
+                <% } %>
+                    
+                    <% if( article.favorited == true) { %>
+                        <script>
+                            $(".favorite").css("color", "red");
+                        </script>
+                    <% } %>
+                
+              </div>
+              <div class="row text-right">
+                  <button class="ui circular icon button" id="like"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+              </div>
+              <div class="row text-right">
+                  <p class="upvotes"><%=article.likes%></p>
+              </div>
+              <div class="row text-right">
+                  <button class="ui circular icon button" id="dislike"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
               </div>
           </div>
       </div>
         <h3><%=article.title%></h3>
         <p><%=article.summary%></p>
+        
         <div class="row">
-             <a href="/articles/all/<%=article._id%>"><button class="circular ui icon button"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
-             <a href="/articles/all/new"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+             <a href="/articles/all/<%=article._id%>"><button class="circular ui icon button"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+             
+             <!--edit button only shows if user owns post-->
+             <% if (article.author.username == currentUser.username ) { %>
+                 <a href="/articles/all/<%=article._id%>/edit"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button></a>
+             <% } %>
         </div>
        
       </div>
     </div>
     
-
 <% }) %>
+
+
 
 <% recipe.forEach(function(recipe) { %>
 
 <div class="col-md-4">
 
 <!--recipes-->
-<div class="thumbnail">
-      <div class="thumbnail-image">
-          <div class="overlay">
-              <div class="row">
-                  <i class="fa fa-heart" aria-hidden="true"></i>
+<div class="thumbnail" style="background:#80afc1">
+      <div class="thumbnail-image" style="background:url(<%=recipe.image%>); background-size:cover; background-position:center">
+          <div class="overlay bulletin">
+              <div class="row text-right">
+                  <button class="ui circular icon button"><i class="fa fa-heart" aria-hidden="true" id="favorite"></i></button>
+              </div>
+              <div class="row text-right">
+                  <button class="ui circular icon button" id="like"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+              </div>
+              <div class="row text-right">
+                  <p class="upvotes"><%=article.likes = 0%></p>
+              </div>
+              <div class="row text-right">
+                  <button class="ui circular icon button" id="dislike"><i class="fa fa-angle-down" aria-hidden="true"></i></button>
               </div>
           </div>
       </div>
@@ -52,8 +116,10 @@
         <h3><%=recipe.title%></h3>
         <p><%=recipe.summary%></p>
         <div class="row">
-             <a href="/recipes/<%=recipe._id%>"><button class="circular ui icon button"><i class="fa fa-eye" aria-hidden="true"></i></button></a>
-             <a href="/articles/all/new"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+             <a href="/recipes/<%=recipe._id%>"><button class="circular ui icon button"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+             <% if (recipe.author.username == currentUser.username ) { %>
+                 <a href="/recipes/<%=recipe._id%>/edit"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button></a>
+            <% } %>
         </div>
       </div>
     </div>
@@ -63,5 +129,10 @@
 <% }) %>
 
 </div>
+
+<% console.log(currentUser.username)%>
+<% console.log(currentUser.favorited) %>
+<% console.log("==============================") %>
+
 
 <%include ../partials/footer%>

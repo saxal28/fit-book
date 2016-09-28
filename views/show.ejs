@@ -9,7 +9,7 @@
     }
     .overlay {
         opacity: .8;
-        background:none;
+ 
          text-shadow: 2px 2px 4px black;
          padding-top: 12%;
     }
@@ -19,69 +19,119 @@
         margin-bottom: 40px;
     }
     
-    .container {
-        background:url(http://wallpaperlayer.com/img/2015/9/vintage-paper-wallpaper-3126-3326-hd-wallpapers.jpg);
-        border:1px solid black;
+    .jumbotron {
+        background:url(<%=recipe.image%>);
+        background-size:cover;
+        background-position:bottom center;
+        height: 500px;
+        margin-bottom:0;
     }
+    
 </style>
 
-<div class="index-header">
-    <div class="overlay">
-    <h1><%=recipe.title%></h1>
-    <h2><small><%=recipe.summary%></small></h2>
-    </div>
-</div>
 
-<div class="container content-container text-center">
+<div class="container content-container">
     
-     <div class="rowr btn-row text-left">
-        <a href="/recipes">
+    <div class="jumbotron">
+        
+    </div>
+        <div class="row text-center ui raised segment" style="background: linear-gradient(to left, #f46b45 , #eea849);">
+            <div class="row" style="color:white; border-bottom:1px solid white">
+                <h2 class="text-right"><%=recipe.title%></h2>
+                <h4 class="text-right"><em>Created by: <strong><%=recipe.author.username%></strong></em></h4>
+            </div>
+            <div class="col-md-7">
+                <div class="jumbotron-content"  style="background:transparent">
+                <h2>Nutrition</h2>
+                    <h5>Calories: <%=recipe.calories%> | 
+                    Carbs: <%=recipe.carb%> |
+                    Protein: <%=recipe.protein%> | 
+                    Fat: <%=recipe.fat%> </h5>
+                </div>
+            
+            </div>
+            
+            <div class="col-md-5">
+             <div class="jumbotron-content" style="background:transparent;">
+             <h2>Instructions</h2>
+                <h5 class="text-left"><i class="fa fa-star" aria-hidden="true"></i> <%=recipe.step1%></h5>
+                <h5 class="text-left"><i class="fa fa-star" aria-hidden="true"></i> <%=recipe.step2%></h5>
+                <h5 class="text-left"><i class="fa fa-star" aria-hidden="true"></i> <%=recipe.step3%></h5>
+                <h5 class="text-left"5><i class="fa fa-star" aria-hidden="true"></i> <%=recipe.step4%></h5>
+                <h5 class="text-left"><i class="fa fa-star" aria-hidden="true"></i> <%=recipe.step5%></h5>
+                <% if (recipe.step6) { %>
+                    <h5 class="text-left"><i class="fa fa-star" aria-hidden="true"></i> <%=recipe.step6%></h5>
+                <% } %>
+                <% if (recipe.step7) { %>
+                    <h5 class="text-left"><i class="fa fa-star" aria-hidden="true"></i> <%=recipe.step7%></h5>
+                <% } %>
+            </div>
+            
+            </div>
+            
+            </div>
+        
+
+    
+    <!--button row-->
+    
+    <div class="row btn-row text-left ui raised segment">
+        <a href="/bulletin-board">
              <button class="circular ui icon button">
-                  <i class="fa fa-arrow-left" aria-hidden="true"></i> 
+                  <i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back
              </button>
         </a>
         <a href="/recipes/<%=recipe._id %>/edit">
             <button class="circular ui icon button">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
+              <i class="fa fa-pencil" aria-hidden="true"></i> Edit
              </button>
         </a>
         <form method="post" action="/recipes/<%=recipe._id%>?_method=DELETE" class="pull-right">
-            <button class="circular ui icon button"><i class="fa fa-times" aria-hidden="true"></i></button>
+            <button class="circular ui icon button"><i class="fa fa-times" aria-hidden="true"></i> Delete</button>
         </form>
 
 
     </div>
+    
+    <!--comments section-->
+    
+    <div class="ui comments">
+          <h3 class="ui dividing header">Comments</h3>
+        
+        <div class="row">
+            <a href="/recipes/<%=recipe.id%>/comments/new"><button class="ui big inverted red button">Add Comment</button></a>
 
+         <div class="comment-container">
+        
+        <% recipe.comments.forEach(function(comment) { %>
+        
+                  <div class="comment">
+                    <a class="avatar">
+                      <img src="https://pbs.twimg.com/profile_images/633817680286384128/TMHEs83b.jpg">
+                    </a>
+                    <div class="content">
+                      <span class="author"><%= comment.author.username%></span>
+                      <div class="metadata">
+                        <span class="date">Today</span>
+                      </div>
+                      <div class="text">
+                        <%=comment.text%>
+                      </div>
+                      <div class="actions">
+                        <a class="reply">Reply</a>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+        
+            <!--<p><strong></strong> - </p>-->
+        <% }) %>
+        </div>
     
-    <div class="row">
-        <div class="col-md-4">
-            <ul><h2>Nutrition</h2>
-                <l>Calories: <%=recipe.calories%></li>
-                <li>Carbs:  <%=recipe.carb%></li>
-                <li>Protein:  <%=recipe.protein%></li>
-                <li>Fat  <%=recipe.fat%></li>
-            </ul>
-        </div>
-        <div class="col-md-4">
-            <h2>Shopping List</h2>
-        </div>
-         <div class="col-md-4">
-            <h2 class="text-center">Prep Time</h2>
-        </div>
-        <div class="col-md-12">
-            <h2 class="text-center">Instructions</h2>
-                <ol>
-                    <li><%=recipe.step1%></li>
-                    <li><%=recipe.step2%></li>
-                    <li><%=recipe.step3%></li>
-                    <li><%=recipe.step4%></li>
-                    <li><%=recipe.step5%></li>
-                    <li><%=recipe.step6%></li>
-                    <li><%=recipe.step7%></li>
-                </ol>
-        </div>
-    </div>
-    
+</div>
+
+</div>
+
 </div>
 
 

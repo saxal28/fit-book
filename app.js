@@ -16,7 +16,7 @@ var app = express();
 
 
 
-// seedDB();
+// seedDB();  seed the database
 //local database
 // mongoose.connect("mongodb://localhost/fit-book");
 
@@ -28,6 +28,12 @@ app.use(methodOverride("_method"));
 app.use(express.static(__dirname+"/public"));
 
 app.set("view engine", "ejs");
+
+//pass data to every template
+app.use(function(req, res, next) {
+    res.locals.currentUser = req.user;
+    next();
+});
 
 
 // passport configuration
@@ -50,7 +56,7 @@ passport.deserializeUser(User.deserializeUser());
 //=======================
 
 app.get("/", function(req, res) {
-    res.render("home");
+    res.render("home", {currentUser: req.user});
 });
 
 //=====================================================================
@@ -101,7 +107,7 @@ app.get("/articles/all", function(req, res) {
 //INDEX ROUTE => BULLETIN BOARD
 //==============================
 
-app.get("/bulletin-board", function(req, res) {
+app.get("/bulletin-board", isLoggedIn,  function(req, res) {
     Article.find({}, function(err, article) {
         if(err) {
             console.log(err);
@@ -110,14 +116,32 @@ app.get("/bulletin-board", function(req, res) {
                 if(err) {
                     console.log(err)
                 } else {
-                    res.render("bulletin-board/index", {article:article, recipe:recipe})
+                    res.render("bulletin-board/index", {article:article, recipe:recipe, currentUser: req.user})
                 }
             })
         }
     });
-
-    
 });
+
+//============================
+//INDEX ROUTE => HQ
+//============================
+
+app.get("/hq", isLoggedIn,  function(req, res) {
+    Article.find({}, function(err, article) {
+        if(err) {
+            console.log(err);
+        } else {
+            Recipe.find({}, function(err, recipe) {
+                if(err) {
+                    console.log(err)
+                } else {
+                        res.render("hq/index", {article:article, recipe:recipe, currentUser: req.user })
+                }
+            })
+        }
+    })
+})
 
 //============================
 //INDEX ROUTE => DANGER ZONE
@@ -159,8 +183,13 @@ app.post("/recipes", function(req, res) {
         if(err){
             console.log(err);
         } else {
+            //add username and id to recipe
+            createdRecipe.author.id = req.user._id;
+            createdRecipe.author.username = req.user.username;
+            createdRecipe.save();
             //redirect back to /recipes
-            res.redirect("/recipes");
+            console.log("created recipe")
+            res.redirect("/bulletin-board");
         }
     });
 });
@@ -174,8 +203,11 @@ app.post("/articles/all", function(req, res) {
         if(err) {
             console.log(err);
         } else {
+            createdArticle.author.id = req.user._id;
+            createdArticle.author.username = req.user.username;
+            createdArticle.save();
             console.log("Created article");
-            res.redirect("/articles/all");
+            res.redirect("/bulletin-board");
         }
     });
 });
@@ -196,7 +228,7 @@ app.get("/recipes/:id", function(req, res) {
         if(err){ 
             console.log(err);
         } else {
-            res.render("show", {recipe: recipe});
+            res.render("show", {recipe: recipe, currentUser: req.user});
         }
     });
 });
@@ -211,7 +243,7 @@ app.get("/articles/all/:id", function(req, res) {
             console.log(err);
         } else {
             
-            res.render("articles/show", {article: article});
+            res.render("articles/show", {article: article, currentUser: req.user});
         }
     });
 });
@@ -317,6 +349,8 @@ app.delete("/articles/all/:id", function(req, res) {
 //---------------------COMMENTS ROUTES--------------------------------
 //=====================================================================
 
+//article comments
+
 app.get("/articles/all/:id/comments/new", function(req, res) {
     //find campground by id
     Article.findById(req.params.id, function(err, article) {
@@ -340,17 +374,62 @@ app.post("/articles/all/:id/comments", function(req, res) {
                 if(err) {
                     console.log(err);
                 } else {
+                    //add username and id to comment
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.username;
+                    comment.save();
                     //connect new comment to article
                     article.comments.push(comment);
                     article.save();
                     //redirect back to article
+                    console.log(comment)
                     res.redirect("/articles/all/"+req.params.id)
                 }
             })
             
         }
+    });
+});
+
+//recipe comments
+//recipe new comment form
+app.get("/recipes/:id/comments/new", function(req, res) {
+    Recipe.findById(req.params.id, function(err, foundRecipe) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.render("comments/recipe/new", {recipe:foundRecipe});
+        }
+    });
+});
+
+//recipe create new comment
+app.post("/recipes/:id/comments", function(req, res) {
+    //find recipe
+    Recipe.findById(req.params.id, function(err, recipe) {
+        if(err) {
+            console.log(err);
+        } else {
+            //add comment to recipe
+            Comment.create(req.body.comment, function(err, comment) {
+                if(err) {
+                    console.log(err)
+                } else {
+                    //add username and id to comment
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.username;
+                    comment.save();
+                    //connect new comment to article
+                    recipe.comments.push(comment);
+                    recipe.save();
+                    //redirect back to article
+                    console.log(comment)
+                    console.log("comment created")
+                    res.redirect("/recipes/"+req.params.id)
+                }
+            })
+        }
     })
-    
     
 })
 
@@ -372,7 +451,7 @@ app.post("/register", function(req, res) {
             return res.render("register");
         } 
         passport.authenticate("local")(req, res, function() {
-            res.redirect("/recipes");
+            res.redirect("/hq");
         });
     });
 });
@@ -385,7 +464,7 @@ app.get("/login", function(req, res) {
 //login logic
 app.post("/login", passport.authenticate("local", 
     {
-    successRedirect: "/recipes",
+    successRedirect: "/hq",
     failureRedirect: "/login"
     }),  function(req, res) {
 });
@@ -399,6 +478,8 @@ app.get("/logout", function(req, res) {
 function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) {
         return next();
+    } else {
+        res.redirect("/login")
     }
 }
 

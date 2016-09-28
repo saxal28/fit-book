@@ -26,3 +26,25 @@ $(".all-articles").hover(function() {
 }, function() {
     $(this).children().fadeOut();
 });
+
+//favorite icon for recipe book
+// $(".bulletin").on("click",function(){
+//     $(this).css("color", "red")
+//     $(this).css("font-size", "30px")
+// })
+
+// $("#like").on("click",function(){
+//     var one = $(this).parent().next().children("p.upvotes").text();
+//     console.log($(this).parent().next())
+//     var two = parseInt(one) + 1
+//     $(this).parent().next().children("p.upvotes").text(two);
+    
+// });
+
+// $("#dislike").on("click",function(){
+//     var one  = $(this).parent().prev().children("p.upvotes").text();
+//     var two = parseInt(one) - 1;
+//     $(this).parent().prev().children("p.upvotes").text(two);
+    
+// });
+
