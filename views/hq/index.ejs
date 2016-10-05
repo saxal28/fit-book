@@ -1,60 +1,137 @@
 <% include ../partials/header%>
 
+<style>
+    h1 {
+        color:white;
+    }
+    .col-md-4 {
+        padding:20px;
+    }
+</style>
+
 <div class="jumbotron">
         <h1>HQ</h1>
-        <h3>Your Stickied Content is Saved Here!</h3>
+        <h3>Your Bulletins and Saved Posts are Saved Here!</h3>
         <a href="/bulletin-board"><button class="ui huge inverted button"style="margin-top: 30px">Visit The Bulletin Board</button></a>
     </div>
 
 <div class="container text-center">
     
     <div class="row">
-        <div class="col-md-6">
-            <h1 style="padding-top: 30px">My Articles</h1>
-            <hr>
+            <h1 class="hq-titles">My Articles</h1>
             
             <% article.forEach(function(article) { %>
             
             <!--checks to see if article author and current user match-->
             <% if (article.author.username == currentUser.username ) { %>
-            
+            <div class="col-md-4">
               <div class="ui raised segment">
                   <h3><%=article.title%></h3>
                   <p><%=article.summary%></p>
                    <div class="row text-right">
-                     <a href="/articles/all/<%=article._id%>"><button class="circular ui icon button"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                     <a href="/articles/all/<%=article._id%>/edit"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button></a>
+                     <a href="/bulletin-board/articles/<%=article._id%>"><button class="ui small inverted blue button">View</button></a>
+                     <a href="/bulletin-board/articles/<%=article._id%>/edit"><button class="ui small inverted red button">Edit</button></a>
                     </div>
               </div>
+              
+             </div>
               
               <% }; %>
               
             <% }); %>
-        </div>
-        <div class="col-md-6">
-            <h1 style="padding-top: 30px">My Recipes</h1>
-            <hr>
+            
+            </div>
+
+        <!--my recipes category-->
+        <div class="row">
+            <h1 class="hq-titles">My Recipes</h1>
+
             
                 <%recipe.forEach(function(recipe) { %>
                 
                 <!--checks to see if current user is the author of recipe-->
                 <% if (recipe.author.username == currentUser.username ) { %>
-                
+                 <div class="col-md-4">
                 <div class="ui raised segment">
                     <h3><%=recipe.title%></h3>
                     <p><%=recipe.summary%></p>
                     <!--<img src='<%=recipe.image%>' class="img-responsive">-->
                     <div class="row text-right">
-                        <a href="/recipes/<%=recipe._id%>"><button class="circular ui icon button"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                        <a href="/recipes/<%=recipe._id%>/edit"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button></a>
+                        <a href="/bulletin-board/recipes/<%=recipe._id%>"><button class="ui small inverted blue button">View</button></a>
+                        <a href="/bulletin-board/recipes/<%=recipe._id%>/edit"><button class="ui small inverted red button">Edit</button></a>
+                        <form method="post" action="/bulletin-board/recipes/<%=recipe._id%>?_method=DELETE" class="pull-right">
+                            <button class="ui small red button">Delete</button>
+                        </form>
                     </div>
                 </div>
+                
+                        </div>
+                
+                <% } %>
+                
+                <% }); %>
+
+
+        </div>
+        <div class="row">
+        <!--my questions category-->
+        
+            <h1 class="hq-titles">My Questions</h1>
+
+            
+                <%question.forEach(function(question) { %>
+                
+                <!--checks to see if current user is the author of recipe-->
+                <% if (question.author.username == currentUser.username ) { %>
+                 <div class="col-md-4">
+                <div class="ui raised segment">
+                    <h3><%=question.title%></h3>
+                    <div class="row text-right">
+                        <a href="/bulletin-board/questions/<%=question._id%>"><button class="ui small inverted blue button">View</button></a>
+                        <a href="/bulletin-board/questions/<%=question._id%>/edit"><button class="ui small inverted red button">Edit</button></a>
+                        <form method="post" action="/bulletin-board/questions/<%=question._id%>?_method=DELETE" class="pull-right">
+                          <button class="btn btn-xs">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                
+        </div>
                 
                 <% } %>
                 
                 <% }); %>
 
         </div>
+        
+        
+        <!--my motivation category-->
+        <div class="row">
+        
+            <h1 class="hq-titles">My Motivation</h1>
+
+            
+                <%motivation.forEach(function(motivation) { %>
+                
+                <!--checks to see if current user is the author of recipe-->
+                <% if (motivation.author.username == currentUser.username ) { %>
+                <div class="col-md-12">
+                <div class="thumbnail" style="background:transparent; margin-bottom:20px;">
+                    <img class="img-responsive" src="<%=motivation.image%>" style="margin:0 auto; border:1px solid white; width:100%">
+                    <div class="caption row text-right" style="margin:0 auto; padding:20px">
+                        <a class="btn btn-xs" href="/bulletin-board/motivation/<%=motivation._id%>">View</button></a>
+                        <a class="btn btn-xs" href="/bulletin-board/motivation/<%=motivation._id%>/edit">Edit</button></a>
+                        <!--<form action="/bulletin-board/motivation/<%=motivation._id%>?_method=DELETE" method="post">-->
+                        <!--    <button class="ui small red button">Delete</button>-->
+                        <!--</form>-->
+                    </div>
+                </div>
+                </div>
+                
+                <% } %>
+                
+                <% }); %>
+
+
     </div>
     
     <!--<div class="row">-->

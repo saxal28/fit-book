@@ -1,0 +1,37 @@
+<!--new questions form-->
+
+<% include /partials/header %>
+
+<style>
+body {
+    background: linear-gradient(to left, #f46b45 , #eea849);
+}
+</style>
+
+<div class="unpadded-overlay" style="padding-top:8%">
+
+    <div class="container text-left">
+    <form method="post" action="/bulletin-board/questions">
+      <div class="row">
+                <h1>Ask a Question!</h1>
+
+                <div class="form-group">
+                    <label>Question</label>
+                        <input type="text" class="form-control" placeholder="ask question here" name="question[title]">
+                </div>
+                        
+                <div class="row">
+                    <label>Body</label>
+                        <textarea class="form-control" rows="6" placeholder="elaborate here....." name="question[body]"></textarea>
+                </div>
+            
+                <div class="row">
+                    <button class="ui big inverted button" style="margin-bottom:20px">Create!</button>
+                </div>
+        </form>
+            
+            </div>
+            
+    </div>
+</div>
+

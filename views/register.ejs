@@ -1,41 +1,31 @@
 <% include /partials/header %>
 
-<style>
-    .overlay {
-        padding-top:15%;
-        background: #f46b45; /* fallback for old browsers */
-        background: -webkit-linear-gradient(to left, #f46b45 , #eea849); /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to left, #f46b45 , #eea849); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        opacity: 0.9;
-    }
+<!--register page-->
 
-</style>
-
-
-    <div class="overlay">
+    <div class="overlay form-page">
         <div class="container text-left">
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-sm-6">
                     <h1>Register Here!</h1>
                     <form action="/register" method="post">
                       <div class="form-group">
                         <label>Username</label>
-                        <input type="text" class="form-control" name="username" placeholder="username">
+                            <input type="text" class="form-control" name="username" placeholder="username">
                       </div>
                       <div class="form-group">
                         <label>Password</label>
-                        <input type="password" class="form-control" name="password"placeholder="Password">
+                            <input type="password" class="form-control" name="password"placeholder="Password">
                         <div class="row button-row">
-                            <button class="ui big inverted button"style="margin-top: 20px">Sign Up!</button>
+                            <button class="btn btn-md" style="margin-top: 20px">Sign Up!</button>
                         </div>
                       </div>
                       </form>
-                      </div>
+                </div>
                     
-                <div class="col-xs-6">
+                <div class="col-sm-6">
                     <h1>Already Have An Account?</h1>
                     <h3>What Are You Waiting For?!</h3>
-                    <a href="/login"><button class="ui big inverted button">Sign In</button></a>
+                    <a href="/login" class="btn btn-primary btn-md">Sign In</a>
                 </div>
             </div>
         </div>

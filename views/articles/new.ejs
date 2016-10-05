@@ -1,56 +1,42 @@
 <% include /partials/header %>
 
-<style>
-    .overlay {
-        padding-top:50px;
-        background:url(https://hd.unsplash.com/22/brick-wall.JPG);
-        background-size:cover;
-        opacity: 0.9;
-    }
+<!--new article page-->
 
+<style>
+body {
+    background: linear-gradient(to left, #f46b45 , #eea849);
+}
 </style>
 
-<div class="overlay">
+<div class="unpadded-overlay" style="padding-top:8%">
+
     <div class="container text-left">
-    <form method="post" action="/articles/all">
+    <form method="post" action="/bulletin-board/articles">
       <div class="row">
+                <h1>Create New Article</h1>
 
-        <div class="form-group">
-            <label>Title</label>
-                <input type="text" class="form-control" placeholder="title" name="article[title]">
-        </div>
-
-
-        <div class="form-group">
-            <label>Category</label><br>
-        <select class="selectpicker" name="article[flag]">
-            <option>Weightlifting</option>
-            <option>Cardio</option>
-            <option>Nutrition</option>
-        </select>
-        </div>
-
-
-        </div>
-        <div class="row">
-                <label>Summary</label>
-                <textarea class="form-control" rows="1" placeholder="One Sentence Summary......" name="article[summary]"></textarea>
-            </div>
+                <div class="form-group">
+                    <label>Title</label>
+                        <input type="text" class="form-control" placeholder="title" name="article[title]">
+                </div>
             
-            <div class="row">
-                <label>Body</label>
-                <textarea class="form-control" rows="6" placeholder="type comments/information/instructions here......" name="article[body]"></textarea>
+                <div class="row">
+                    <label>Summary</label>
+                        <textarea class="form-control" rows="1" placeholder="One Sentence Summary......" name="article[summary]"></textarea>
+                </div>
+                        
+                <div class="row">
+                    <label>Body</label>
+                        <textarea class="form-control" rows="6" placeholder="type comments/information/instructions here......" name="article[body]"></textarea>
+                </div>
+            
+                <div class="row">
+                    <button class="ui big inverted button" style="margin-bottom:20px">Create!</button>
+                </div>
+        </form>
+            
             </div>
-
-        <div class="row">
-             <button class="ui large button">Create!</button>
-        </div>
-        
-        
-       
-</form>
-</div>
-</div>
+            </div>
 
 
 

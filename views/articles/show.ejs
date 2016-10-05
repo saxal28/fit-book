@@ -1,33 +1,37 @@
 <% include /partials/header %>
 
-<div class="container content-container">
-    <div class="jumbotron">
-        <h1><%=article.title%></h1>
-        <h4 class="text-right"><em>Submitted By:  <%=article.author.username%></em></h4>
+<div class="container">
+    <div class="thumbnail content-container">
+        <h2><%= article.title%></h2>
+        <h5>Author: <%= article.author.username %></h5>
+        <hr>
+        <%-article.body%>
+        <hr>
+        <!--button row-->
+                <div class="row button-row" style="margin-bottom:20px">
+                    <a href="/bulletin-board/articles" class="btn btn-xs">
+                       Go Back
+                    </a>
+                    <a class="btn btn-xs"href="/bulletin-board/articles/<%=article._id %>/edit">
+                       Edit
+                    </a>
+                    <form method="post" action="/bulletin-board/articles/<%=article._id%>?_method=DELETE" class="pull-right">
+                        <button class="btn btn-xs">Delete</button>
+                    </form>
+                </div>
     </div>
+</div>
     
-    <%-article.body%>
+    <!--comments section-->
 
-    <div class="row">
-        <a href="/bulletin-board"><button class="circular ui icon button"><i class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</button></a>
-        
-        <!--if user owns article, edit and delete forms show-->
-        <% if(currentUser.username == article.author.username) { %>
-          <a href="/articles/all/<%=article._id%>/edit"><button class="circular ui icon button"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button></a>
-          <form method="post" action="/articles/all/<%=article._id%>?_method=DELETE" class="pull-right">
-                 <button class="circular ui icon button"><i class="fa fa-times" aria-hidden="true"></i> Delete</button>
-          </form>
-        <% } %>
-    </div>
-        <div class="ui comments">
-          <h3 class="ui dividing header">Comments</h3>
+        <div class="ui comments row btn-row text-left comment-box" style="width: 70%; min-width:300px; margin:0 auto">
+          <h3 class="ui dividing header hq-titles">Comments</h3>
+
 
         <div class="row">
-            <a href="/articles/all/<%=article.id%>/comments/new"><button class="ui big red button">Add Comment</button></a>
+            <a href="/bulletin-board/articles/<%=article.id%>/comments/new"><button class="ui inverted big red button">Add Comment</button></a>
         </div>
-        
-        
-        
+
         <div class="comment-container">
         
         <% article.comments.forEach(function(comment) { %>
@@ -55,9 +59,11 @@
         <% }) %>
         </div>
 
+    </div>
+
 </div>
 
-<% console.log(article) %>
+
 
 
 

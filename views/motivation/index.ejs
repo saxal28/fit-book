@@ -1,22 +1,44 @@
-<% include /partials/header %>
+<!--movtivation index page-->
 
+<% include ../partials/header %>
+
+<style>
+    .row {
+        padding-right:15px;
+        
+    }
+    
+    .overlay {
+        padding-top:8%;
+    }
+
+    .col-sm-4, .col-sm-6 {
+      padding: 20px;
+    }
+    
+    .thumbnail-button-row{
+      background:#333;
+      padding:0;
+    }
+  
+</style>
 
 <div class="jumbotron" style="margin-bottom:0px">
-    <h1>Articles Board</h1>
-    <h3>Write A Fitness-Related Article and Read What Others Have Written!</h3>
+    <h1>Motivation Board</h1>
+    <h3>Post Your Motivational Images, Posts, Stories Here!</h3>
     <a href="/hq"><button class="ui huge inverted button" style="margin-top: 30px">Go to HQ</button></a>
-    <a href="/hq"><button class="ui huge inverted button" style="margin-top: 30px">Explore the Bulletin Board</button></a>
+    <a href="/bulletin-board"><button class="ui huge inverted button" style="margin-top: 30px">Explore the Bulletin Board</button></a>
 </div>
 
 
     <div class="bulletin-navbar">
         <!--article dropdown-->
         <span class="dropdown">
-          <button class="ui big inverted button dropdown-toggle active" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button class="ui big inverted button dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                <i class="fa fa-book bulletin-navbar-icons" aria-hidden="true"></i>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="/bulletin-board/articles/all/new">Create New Article</a></li>
+            <li><a href="/articles/all/new">Create New Article</a></li>
             <li><a href="/bulletin-board/articles">Just View Articles</a></li>
           </ul>
         </span>
@@ -32,6 +54,7 @@
           </ul>
         </span>
         <!--question dropdown-->
+        
         <span class="dropdown">
           <button class="ui big inverted button dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <i class="fa fa-question bulletin-navbar-icons" aria-hidden="true"></i>
@@ -44,7 +67,7 @@
         </span>
         <!--motivation dropdown-->
         <span class="dropdown">
-          <button class="ui big inverted button dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          <button class="ui big inverted button dropdown-toggle active" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
            <i class="fa fa-rocket bulletin-navbar-icons" aria-hidden="true"></i>
             <!--<span class="caret"></span>-->
           </button>
@@ -55,37 +78,38 @@
         </span>
     </div>
 
-<div class="container well">
-    
-    <div class="ui divided items">
-    
-    <% article.forEach(function(article) { %>
-    
-          <div class="item">
-            <div class="image">
-              <img src="http://leanmuscleproject.com/wp-content/uploads/2015/11/barbell.jpg">
-            </div>
-            <div class="content">
-                <a class="header"><%= article.title %> -- <small><%=article.flag%></small></a>
-                <div class="meta">
-                  <span><%= article.summary %></span>
+
+<div class="container">
+
+  <div class="row text-center">
+     <% motivation.forEach(function(motivation) { %>
+        <div class="col-sm-6 text-center">
+          <div class="thumbnail">
+            <div class="thumbnail-image" style="background:url(<%=motivation.image%>); background-size:cover; height:300px">
+             </div>
+             <div class="caption">
+               <div class="row thumbnail-button-row">
+                   <a class="btn btn-xs" href="/bulletin-board/motivation/<%=motivation._id%>">View</a>
+                   <% if (motivation.author.username == currentUser.username ) { %>
+                       <a class="btn btn-xs"href="/bulletin-board/motivation/<%=motivation._id%>/edit">Edit</a>
+                        <form action="/bulletin-board/motivation/<%=motivation._id%>?_method=DELETE" method="post" class="pull-right">
+                              <button class="btn btn-xs">X</button>
+                        </form>
+                  <% } %>
                 </div>
-                <div class="description">
-                    <p><%- article.body%></p>
-                </div>
-                <div class="extra">
-                    <a href="/bulletin-board/articles/<%=article._id%>"><button class="ui mini orange button"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
-                </div>
-            </div>
+             </div>
+            <!--<div class="row text-right"   style="padding-right:5%; padding-bottom:20px">-->
+            <!--  <button class="ui small inverted blue button">Edit</button>-->
+            <!--  <button class="ui small inverted red button">Help!</button>-->
+            <!--</div>-->
+            
+          </div>
+        </div>
+   <%  }) %>
   </div>
-        
-    <% }) %>
-    
-
-
-    </div>
-
+  
 </div>
 
 
-<% include /partials/footer %>
+
+<%include ../partials/footer%>

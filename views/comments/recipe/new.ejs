@@ -4,10 +4,10 @@
     <div class="jumbotron text-center">
         <h1>Add Comment to <%=recipe.title%></h1>
     </div>
-    <form method="post" action="/recipes/<%=recipe.id%>/comments">
+    <form method="post" action="/bulletin-board/recipes/<%=recipe.id%>/comments">
         <label>Text</label>
             <input type="text" name="comment[text]">
-        <button>Post</button>
+        <button class="btn btn-xs">Post</button>
     </form>
 </div>
 

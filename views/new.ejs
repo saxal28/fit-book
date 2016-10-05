@@ -1,13 +1,7 @@
 <% include /partials/header %>
 
 <style>
-    .overlay {
-        padding-top:50px;
-        background:url(https://hd.unsplash.com/22/brick-wall.JPG);
-        background-size:cover;
-        opacity: 0.8;
-        
-    }
+
     label, h2, h3 {
         color:black;
     }
@@ -18,111 +12,115 @@
     label {
         font-size:16px;
     }
+    
+    body {
+      background: linear-gradient(to left, #f46b45 , #eea849);
+    }
 
 </style>
 
 
-<div class="overlay">
+
+<div class="unpadded-overlay new-form-page">
 
     <div class="container text-left">
-  
-    <form method="post" action="/recipes">
+    <form method="post" action="/bulletin-board/recipes">
        <div class="container">
-  <div class="nutrition-label">    
-    <div class="row">
-      <h2>Recipe</h2>
-      <hr>
-    </div>
-    <div class="row">
-      <label>Title</label>
-      <input type="text" class="text-1 pull-right" placeholder="quirky title here"name="recipe[title]">
-      <hr>
-    </div>
-    <div class="row">
-      <label>Image</label>
-      <input type="text" class="text-1 pull-right" placeholder="link to image" name="recipe[image]">
-      <hr>
-    </div>
-    <div class="row">
-      <label>Summary</label>
-      <input type="text" class="text-1 pull-right" placeholder="one sentence summary" name="recipe[summary]">
-      <hr>
-    </div>
-    <div class="row">
-      <h3>Nutrition Facts</h3>
-      <hr>
-    </div>
-    <div class="row">
-      <label>Calories</label>
-      <input type="text" class="number pull-right" placeholder="0" name="recipe[calories]">
-      <hr>
-    </div>
-    <div class="row">
-      <label>Carbs</label>
-      <input type="number" class="number pull-right" placeholder="0"name="recipe[carb]">
-      <hr>
-    </div>
-    <div class="row">
-      <label>Protein</label>
-      <input type="number" class="number pull-right" placeholder="0"name="recipe[protein]">
-      <hr>
-    </div>
-    <div class="row">
-      <label>Fat</label>
-      <input type="number" class="number pull-right" placeholder="0"name="recipe[fat]">
-      <hr>
-    </div>
-  </div>
-  
-<!--   this is a test -->
-  <div class="nutrition-label">
-    <div class="row">
-      <h2>Instructions</h2>
-      <hr>
-    </div>
-    <div class="row">
-      <label>Step 1</label>
-      <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step1]">
-      <hr>
-    </div>
-    <div class="row">
-      <label>Step 2</label>
-      <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step2]">
-      <hr>
-    </div>
-    <div class="row">
-      <label>Step 3</label>
-      <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step3]">
-      <hr>
-    </div>
-    <div class="row">
-      <label>Step 4</label>
-      <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step4]">
-      <hr>
-    </div>
-    <div class="row">
-      <label>Step 5</label>
-      <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step5]">
-      <hr>
-    </div>
-    <div class="row">
-      <label>Step 6</label>
-      <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step6]">
-      <hr>
-    </div>
-    <div class="row">
-      <label>Step 7</label>
-      <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step7]">
-      <hr>
-    </div>
-
-    </div>
+          <div class="nutrition-label">    
+            <div class="row">
+              <h2>Recipe</h2>
+              <hr>
+            </div>
+            <div class="row">
+              <label>Title</label>
+              <input type="text" class="text-1 pull-right" placeholder="quirky title here"name="recipe[title]">
+              <hr>
+            </div>
+            <div class="row">
+              <label>Image</label>
+              <input type="text" class="text-1 pull-right" placeholder="link to image" name="recipe[image]">
+              <hr>
+            </div>
+            <div class="row">
+              <label>Summary</label>
+              <input type="text" class="text-1 pull-right" placeholder="one sentence summary" name="recipe[summary]">
+              <hr>
+            </div>
+            <div class="row">
+              <h3>Nutrition Facts</h3>
+              <hr>
+            </div>
+            <div class="row">
+              <label>Calories</label>
+              <input type="text" class="number pull-right" placeholder="0" name="recipe[calories]">
+              <hr>
+            </div>
+            <div class="row">
+              <label>Carbs</label>
+              <input type="number" class="number pull-right" placeholder="0"name="recipe[carb]">
+              <hr>
+            </div>
+            <div class="row">
+              <label>Protein</label>
+              <input type="number" class="number pull-right" placeholder="0"name="recipe[protein]">
+              <hr>
+            </div>
+            <div class="row">
+              <label>Fat</label>
+              <input type="number" class="number pull-right" placeholder="0"name="recipe[fat]">
+              <hr>
+            </div>
+          </div>
+          
+        <!--   this is a test -->
+          <div class="nutrition-label">
+            <div class="row">
+              <h2>Instructions</h2>
+              <hr>
+            </div>
+            <div class="row">
+              <label>Step 1</label>
+              <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step1]">
+              <hr>
+            </div>
+            <div class="row">
+              <label>Step 2</label>
+              <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step2]">
+              <hr>
+            </div>
+            <div class="row">
+              <label>Step 3</label>
+              <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step3]">
+              <hr>
+            </div>
+            <div class="row">
+              <label>Step 4</label>
+              <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step4]">
+              <hr>
+            </div>
+            <div class="row">
+              <label>Step 5</label>
+              <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step5]">
+              <hr>
+            </div>
+            <div class="row">
+              <label>Step 6</label>
+              <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step6]">
+              <hr>
+            </div>
+            <div class="row">
+              <label>Step 7</label>
+              <input type="text" class="text-1 pull-right" placeholder="steps here" name="recipe[step7]">
+              <hr>
+            </div>
+        
+            </div>
   
   
   
   
 </div>
-        <button class="ui big blue button">Create!</button>
+        <button class="ui big inverted button" style="margin-bottom:20px">Create!</button>
         </div>
        
 </form>

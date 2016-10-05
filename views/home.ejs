@@ -1,48 +1,42 @@
 <% include /partials/header %>
 
 <style>
-    body {
-       background:url(https://hd.unsplash.com/photo-1471549499848-34430c1eb730);
-       background-size:cover;
-       background-attachment:fixed;
-       background-position:bottom center
+    .overlay {
+        background:transparent;
     }
-    
 </style>
-
-
-
-<div class="home-header" style="background:transparent">
+<section class="home-header animated fadeInLeftBig" style="background:transparent">
    <div class="overlay" style="opacity:0.9">
           <div class="row">
-               Fit <i class="fa fa-coffee" aria-hidden="true"></i> Book
+               Fit <i class="fa fa-coffee animated infinite pulse" aria-hidden="true"></i> Board
            </div>
            <% if(!currentUser) { %>
                <div class="row">
-                   <a href="/login"><button class="ui inverted massive button">Login</button></a>
-                   <a href="/register"><button class="ui inverted massive button">Sign Up</button></a>
+                   <a href="/login" class="btn btn-primary btn-lg">Login</a>
+                   <a href="/register" class="btn btn-primary btn-lg">Sign Up!</a>
                </div>
            <% } else { %>
                <div class="row">
-                   <a href="/hq"><button class="ui inverted massive button">Dashboard</button></a>
-                   <a href="/bulletin-board"><button class="ui inverted massive button">Bulletin Board</button></a>
+                   <a href="/hq" class="btn btn-primary btn-lg">Dashboard</a>
+                   <a href="/bulletin-board" class="btn btn-primary btn-lg">Bulletin Board</a>
                </div>
            <% } %>
    </div>
-</div>
+</section>
 
-<div class="jumbotron-content">
-    <div class="container text-center">
-            <h1>Hi, Welcome to FitBook</h1>
+<section class="jumbotron-content">
+    <div class="container text-center" id="section1">
+            <h1>Hi, Welcome to FitBoard</h1>
             <h2>"What is Fitbook, and What Can I Do On Here?"</h2>
             <h2>Lets Take The Tour</h2>
     </div>
-</div>
-<div class="jumbotron-content" style="background:transparent; height:60%">
+</section>
+
+<section class="jumbotron-content" style="background:transparent" id="section2">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <h1>Create and Share Ideas, Articles, Tips, Recipes, and Motivation</h1>
+                <h1>Create and Share Articles, Tips, Recipes, and Motivation</h1>
             </div>
             <div class="col-md-6">
                 <div class="row">
@@ -56,9 +50,9 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="jumbotron-content">
+<section class="jumbotron-content" id="section3">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -70,9 +64,9 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="jumbotron-content"style="background:transparent;">
+<section class="jumbotron-content"style="background:transparent;" id="section4">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -84,9 +78,9 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="jumbotron-content">
+<section class="jumbotron-content" id="section5">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -94,23 +88,23 @@
                 <i class="fa fa-tachometer" aria-hidden="true"></i>
             </div>
             <div class="col-md-6">
-                <h1>Send Your Favorite Bulletins to HeadQuarters!</h1>
+                <h1>Send Your Favorite Bulletins to HQ!</h1>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="home-footer" style=background:transparent>
+<section class="home-footer" id="footer" style='background:transparent'>
     <div class="container">
         <div class="row">
             <h1>Let's Get Started.</h1>
         </div>
         <div class="row" style="padding-top: 30px">
-               <a href="/hq"><button class="ui inverted massive button">Go to HQ</button></a>
-               <a href="/bulletin-board"><button class="ui inverted massive button">Go to the Bulletin Board</button></a>
+               <a href="/hq" class="btn btn-primary btn-lg" style="margin-bottom:15px">Go To HQ</a>
+               <a href="/bulletin-board" class="btn btn-primary btn-lg"style="margin-bottom:15px">Explore the Bulletin Board</a>
         </div>
     </div>
-</div>
+</section>
 
 
 

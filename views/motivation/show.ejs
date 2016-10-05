@@ -1,0 +1,60 @@
+<!--motivation show page-->
+
+<% include /partials/header %>
+
+<div class="container">
+    <img class="img-responsive motivation" src="<%= motivation.image %>" style="border:1px solid white">
+        <div class="row button-row" style="background:#333; padding-left:10px; padding-right:10px; border:1px solid white">
+            <a class="btn btn-xs pull-left" href="/bulletin-board/motivation">Back</a>
+            <% if (motivation.author.username == currentUser.username ) { %>
+                <a class="btn btn-xs pull-left" href="/bulletin-board/motivation/<%=motivation._id%>/edit">Edit</a>
+                <!--<form action="/bulletin-board/motivation/<%=motivation._id%>?_method=DELETE" method="post" class="pull-right">-->
+                <!--    <button class="btn btn-xs">X</button>-->
+                <!-- </form>-->
+            <% } %>
+        </div>
+    
+    <!--comments-->
+
+        <div class="ui comments" style="margin: 0 auto; padding-top: 20px" >
+          <h3 class="ui dividing header hq-titles">Comments</h3>
+
+        <a href="/bulletin-board/motivation/<%=motivation.id%>/comments/new"><button class="ui big red inverted button">Add Comment</button></a></h3>
+        <div class="comment-container">
+        <% motivation.comments.forEach(function(comment) { %>
+        
+                  <div class="comment">
+                    <a class="avatar">
+                      <img src="https://pbs.twimg.com/profile_images/633817680286384128/TMHEs83b.jpg">
+                    </a>
+                    <div class="content">
+                      <% if (!comment.author) { %>
+                          <span class="author">Anonymous</span>
+                      <% } else { %>
+                        <span class="author"><%= comment.author.username%></span>
+                      <% } %>
+                      <div class="metadata">
+                        <span class="date">Today</span>
+                      </div>
+                      <div class="text">
+                        <%=comment.text%>
+                      </div>
+                      <div class="actions">
+                        <a class="reply">Reply</a>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+        
+            <!--<p><strong></strong> - </p>-->
+        <% }) %>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<% include /partials/footer %>

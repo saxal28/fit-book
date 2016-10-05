@@ -19,15 +19,19 @@
         font-size:16px;
     }
     
+    body {
+      background: linear-gradient(to left, #f46b45 , #eea849);
+    }
+    
 
 </style>
 
 
-<div class="overlay">
+<div class="unpadded-overlay new-form-post">
 
     <div class="container text-left">
   
-    <form method="post" action="/recipes/<%=recipe._id%>?_method=PUT"><form method="post" action="/recipes">
+    <form method="post" action="/bulletin-board/recipes/<%=recipe._id%>?_method=PUT">
        <div class="container">
   <div class="nutrition-label">    
     <div class="row">
@@ -123,7 +127,7 @@
   
   
 </div>
-        <button class="ui big inverted blue button">Edit</button>
+        <button class="ui big inverted button" style="margin-bottom:20px">Edit</button>
         </div>
        
 </form>

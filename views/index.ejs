@@ -1,47 +1,89 @@
 <% include /partials/header %>
 
-<div class="index-header">
-    <div class="overlay">
-        <div class="row">
-              Your Recipes
-              
-        </div>
-        <div class="row">
-             <a href="/recipes/new"><button class="ui inverted massive orange button">New Recipe</button></a> 
-        </div>
-        
-
-    </div>
+<div class="jumbotron" style="margin-bottom:0px">
+    <h1>Recipe Board</h1>
+    <h3>Post Your Healthy Recipes and View What Others Have Posted!</h3>
+    <a href="/hq"><button class="ui huge inverted button" style="margin-top: 30px">Go to HQ</button></a>
+    <a href="/bulletin-board"><button class="ui huge inverted button" style="margin-top: 30px">Explore the Bulletin Board</button></a>
 </div>
+
+
+    <div class="bulletin-navbar">
+        <!--article dropdown-->
+        <span class="dropdown">
+          <button class="ui big inverted button dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+               <i class="fa fa-book bulletin-navbar-icons" aria-hidden="true"></i>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="/articles/all/new">Create New Article</a></li>
+            <li><a href="/bulletin-board/articles">Just View Articles</a></li>
+          </ul>
+        </span>
+        <!--recipe dropdown-->
+        <span class="dropdown">
+          <button class="ui big inverted button dropdown-toggle active" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fa fa-cutlery bulletin-navbar-icons" aria-hidden="true"></i>
+            <!--<span class="caret"></span>-->
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a class="dropdown-list-item" href="/bulletin-board/recipes/new">Create New Recipe</a></li>
+            <li><a class="dropdown-list-item" href="/bulletin-board/recipes">Just View Recipes</a></li>
+          </ul>
+        </span>
+        <!--question dropdown-->
+        
+        <span class="dropdown">
+          <button class="ui big inverted button dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            <i class="fa fa-question bulletin-navbar-icons" aria-hidden="true"></i>
+            <!--<span class="caret"></span>-->
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="/bulletin-board/questions/new">Ask A Question</a></li>
+            <li><a href="/bulletin-board/questions">Just View Questions</a></li>
+          </ul>
+        </span>
+        <!--motivation dropdown-->
+        <span class="dropdown">
+          <button class="ui big inverted button dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+           <i class="fa fa-rocket bulletin-navbar-icons" aria-hidden="true"></i>
+            <!--<span class="caret"></span>-->
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="/bulletin-board/motivation/new">Post Motivation</a></li>
+            <li><a href="/bulletin-board/motivation">Just View Motivation</a></li>
+          </ul>
+        </span>
+    </div>
 
 <div class="container">
 
-<div class="ui divided items">
+<div class="row">
+  
+
+
   
 
 <% recipes.forEach(function(recipe) { %>
-     
-     <div class="item">
-    <div class="image">
-      <img src="<%= recipe.image %>">
-    </div>
-    <div class="content">
-      <a class="header"><%= recipe.title %></a>
-      <div class="meta">
-        <span><%=recipe.summary%></span>
-      </div>
-      <div class="description">
-        <p></p>
-      </div>
-      <div class="extra">
-        <p>Calories: <%= recipe.calories %>, Carbs: <%=recipe.carb%>, Protein: <%=recipe.protein%></p>
-        <a href="/recipes/<%=recipe._id%>"><button class="ui mini orange button"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
-      </div>
-    </div>
+
+<div class="col-md-6" style="padding: 20px">
+  <div class="thumbnail">
+     <div class="thumbnail-image" style="background:url(<%=recipe.image%>); background-size:cover; height:300px">
+       <div class="no-padding-overlay">
+          <div class="row button-row text-right" style="background:transparent; padding-right:20px">
+           <a href="/bulletin-board/recipes/<%=recipe._id%>" class="btn btn-xs">View</a>
+           <% if(currentUser.username == recipe.author.username) { %>
+               <a href="/bulletin-board/recipes/<%= recipe._id%>/edit" class="btn btn-xs">Edit</a>
+               <form method="post" action="/bulletin-board/recipes/<%=recipe._id%>?_method=DELETE" class="pull-right">
+                        <button class="btn btn-xs">X</button>
+                    </form>
+           <% } %>
+         </div>
+         <h3><%= recipe.title %></h3>
+       </div>
+     </div>
   </div>
+</div>
 
-
-        
 <% }); %>
 
 </div>

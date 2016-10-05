@@ -1,0 +1,17 @@
+<!--new question comments-->
+
+<% include /partials/header%>
+
+<div class="container">
+    <div class="jumbotron text-center">
+        <h1>Add Comment to <%=question.title%></h1>
+    </div>
+    <form method="post" action="/bulletin-board/questions/<%=question._id%>/comments">
+        <label>Text</label>
+            <input type="text" name="comment[text]">
+        <button>Post</button>
+    </form>
+</div>
+
+
+<% include /partials/footer%>

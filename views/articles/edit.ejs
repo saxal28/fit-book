@@ -1,9 +1,11 @@
 <% include /partials/header %>
 
+<!--edit article page-->
+
 <style>
     .overlay {
-        padding-top:50px;
-        background:url(https://hd.unsplash.com/22/brick-wall.JPG);
+        padding-top:100px;
+        background: linear-gradient(to left, #f46b45 , #eea849);
         background-size:cover;
         opacity: 0.9;
     }
@@ -13,23 +15,13 @@
 <div class="overlay">
     
     <div class="container text-left">
-  
-    <form method="post" action="/articles/all/<%=article._id%>?_method=PUT">
+    <h1 style="padding:10px 0">Edit Article</h1>
+    <form method="post" action="/bulletin-board/articles/<%=article._id%>?_method=PUT">
       <div class="row">
 
         <div class="form-group">
             <label>Title</label>
                 <input type="text" class="form-control" placeholder="title" name="article[title]" value="<%=article.title%>">
-        </div>
-
-
-        <div class="form-group">
-            <label>Category</label> <br>
-        <select class="selectpicker" name="article[flag]">
-            <option>Weightlifting</option>
-            <option>Cardio</option>
-            <option>Nutrition</option>
-        </select>
         </div>
 
         </div>

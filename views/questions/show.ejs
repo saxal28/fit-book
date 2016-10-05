@@ -1,0 +1,71 @@
+<!--show page => question-->
+
+<!--question-->
+<% include ../partials/header %>
+
+<div class="container">
+  <div class="row text-center" style="width:70%; margin: 0 auto;min-width:300px">
+    
+
+  <div class="thumbnail question-thumbnail">
+    <h3 class="hq-titles"><%=question.title%></h3>
+    <h4 class="question-box"><i class="fa fa-quote-left" aria-hidden="true"></i> <%=question.body%> <i class="fa fa-quote-right" aria-hidden="true"></i></h4>
+    <a href="/bulletin-board/questions/<%=question.id%>/comments/new"><button class="ui big inverted button">Answer Quesiton</button></a>
+    <div class="row button-row" style="padding-top:30px">
+      <a href="/bulletin-board/questions" class="btn btn-xs pull-left">Go Back</a>
+      <% if (currentUser.username == question.author.username) { %>
+          <a class="btn btn-xs pull-left"href="/bulletin-board/questions/<%=question._id%>/edit">Edit</a>
+          <!--<form action="/bulletin-board/questions/<%=question._id%>?_method=DELETE" method="post">-->
+          <!--  <button class="btn btn-xs pull-right">X</button>-->
+          <!--</form>-->
+      <% } %>
+
+    </div>
+  </div>
+  
+    </div>
+
+    
+    <!--comments-->
+    <div class="row">
+        <div class="ui comments" style="width: 70%; min-width:300px; margin:0 auto">
+          <h3 class="hq-titles">Answers</h3>
+          
+
+
+        <div class="comment-container" style="background:white">
+        
+        <% question.comments.forEach(function(comment) { %>
+        
+                  <div class="comment">
+                    <a class="avatar">
+                      <img src="https://pbs.twimg.com/profile_images/633817680286384128/TMHEs83b.jpg">
+                    </a>
+                    <div class="content">
+                      <% if (!comment.author) { %>
+                          <span class="author">Anonymous</span>
+                      <% } else { %>
+                        <span class="author"><%= comment.author.username%></span>
+                      <% } %>
+                      <div class="metadata">
+                        <span class="date">Today</span>
+                      </div>
+                      <div class="text">
+                        <%=comment.text%>
+                      </div>
+                      <div class="actions">
+                        <a class="reply">Reply</a>
+                      </div>
+                    </div>
+                  </div>
+                  <hr>
+        
+            <!--<p><strong></strong> - </p>-->
+        <% }) %>
+        </div>
+
+      </div>
+      </div>
+  </div>
+
+<% include ../partials/footer %>

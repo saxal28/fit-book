@@ -1,42 +1,33 @@
 <% include /partials/header %>
 
-<style>
-    .overlay {
-        padding-top:15%;
-        background: #f46b45; /* fallback for old browsers */
-        background: -webkit-linear-gradient(to left, #f46b45 , #eea849); /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(to left, #f46b45 , #eea849); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        opacity: 0.9;
-    }
+    <!--login page-->
 
-</style>
-
-    <div class="overlay">
-    <div class="container text-left">
-        <div class="row">
-            <div class="col-sm-6">
-                <h1>Login Here!</h1>
-                <form action="/login" method="post">
-                    <div class="form-group">
-                        <label>Username</label>
-                            <input type="text" class="form-control" placeholder="username" name="username">
-                    </div>
-                    <div class="form-group">
-                        <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password" name="password">
-                            <div class="row button-row">
-                            <button class="ui big inverted button"style="margin-top: 20px; margin-bottom:30px">Login!</button>
-                            </div>
-                   
-                    </div>
-                </form>
+    <div class="overlay form-page">
+        <div class="container text-left">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>Login Here!</h1>
+                    <form action="/login" method="post">
+                        <div class="form-group">
+                            <label>Username</label>
+                                <input type="text" class="form-control" placeholder="username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                                <input type="password" class="form-control" placeholder="Password" name="password">
+                                <div class="row button-row">
+                                <button class="btn btn-primary btn-md"style="margin-top: 20px; margin-bottom:30px">Login!</button>
+                                </div>
+                       
+                        </div>
+                    </form>
+                </div>
+                <div class="col-sm-6">
+                    <h1>No Account?</h1>
+                    <h3>Lets Make One!</h3>
+                    <a href="/register" class="btn btn-primary btn-md">Register</a>
+                </div>
             </div>
-            <div class="col-sm-6">
-                <h1>Don't Have An Account?</h1>
-                <h3>Lets Make One!</h3>
-                <a href="/register"><button class="ui big inverted button">Register</button></a>
-            </div>
-        </div>
         </div>
     </div>
 
