@@ -8,12 +8,12 @@ $(".btn").hover(
 });
 
 $(document).ready(function() {
-    $('#footer, #section1, #section2, #section4, .bulletin-navbar, .thumbnail, .ui.raised.segment').addClass("hideme").viewportChecker({
+    $('#footer, #section1, #section2, #section4, .bulletin-navbar, .thumbnail, .ui.raised.segment, .item').addClass("hideme").viewportChecker({
         classToAdd: 'visible animated fadeInUp',
         offset: 100
        });
        
-    $("#section3, .jumbotron, .item").addClass("hideme").viewportChecker({
+    $("#section3, .jumbotron").addClass("hideme").viewportChecker({
         classToAdd: 'visible animated slideInLeft',
         offset: 100
        });
@@ -21,4 +21,11 @@ $(document).ready(function() {
         classToAdd: 'visible animated slideInRight',
         offset: 100
        });
+});
+
+$("#saved-posts").hide();
+
+
+$("#saved-posts-button").on("click", function() {
+    $("#saved-posts").show().addClass("animated fadeInUp")
 });

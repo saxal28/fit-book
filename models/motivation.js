@@ -6,7 +6,9 @@ var motivationSchema = new mongoose.Schema({
     title:String,
     image:String,
     summary: String,
+    type: String,
     body: String,
+    favorites: Number,
     comments: ["commentSchema"],
     author: {
         id: { 

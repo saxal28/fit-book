@@ -12,12 +12,12 @@
 <div class="jumbotron">
         <h1 class="animated fadeIn">HQ</h1>
         <h3>Your Bulletins and Saved Posts are Saved Here!</h3>
-        <a href="/bulletin-board"><button class="ui huge inverted button"style="margin-top: 30px">Visit The Bulletin Board</button></a>
-    </div>
+        <a class="btn btn-md" href="/bulletin-board" style="margin-top: 10px">Visit The Bulletin Board</button></a>
+</div>
 
-<div class="container text-center">
-    
-    <div class="row">
+<div class="container text-center" id="my-posts">
+    <h1>My Bulletins</h1>
+    <div class="row" >
             <h1 class="hq-titles">My Articles</h1>
             
             <% article.forEach(function(article) { %>
@@ -29,8 +29,8 @@
                   <h3><%=article.title%></h3>
                   <p><%=article.summary%></p>
                    <div class="row text-right">
-                     <a href="/bulletin-board/articles/<%=article._id%>"><button class="ui small inverted blue button">View</button></a>
-                     <a href="/bulletin-board/articles/<%=article._id%>/edit"><button class="ui small inverted red button">Edit</button></a>
+                     <a class="btn btn-xs" href="/bulletin-board/articles/<%=article._id%>">View</a>
+                     <a class="btn btn-xs" href="/bulletin-board/articles/<%=article._id%>/edit">Edit</a>
                     </div>
               </div>
               
@@ -57,10 +57,10 @@
                     <p><%=recipe.summary%></p>
                     <!--<img src='<%=recipe.image%>' class="img-responsive">-->
                     <div class="row text-right">
-                        <a href="/bulletin-board/recipes/<%=recipe._id%>"><button class="ui small inverted blue button">View</button></a>
-                        <a href="/bulletin-board/recipes/<%=recipe._id%>/edit"><button class="ui small inverted red button">Edit</button></a>
+                        <a class="btn btn-xs" href="/bulletin-board/recipes/<%=recipe._id%>">View</a>
+                        <a class="btn btn-xs" href="/bulletin-board/recipes/<%=recipe._id%>/edit">Edit</a>
                         <form method="post" action="/bulletin-board/recipes/<%=recipe._id%>?_method=DELETE" class="pull-right">
-                            <button class="ui small red button">Delete</button>
+                            <button class="btn btn-xs">Delete</button>
                         </form>
                     </div>
                 </div>
@@ -87,8 +87,8 @@
                 <div class="ui raised segment">
                     <h3><%=question.title%></h3>
                     <div class="row text-right">
-                        <a href="/bulletin-board/questions/<%=question._id%>"><button class="ui small inverted blue button">View</button></a>
-                        <a href="/bulletin-board/questions/<%=question._id%>/edit"><button class="ui small inverted red button">Edit</button></a>
+                        <a class="btn btn-xs" href="/bulletin-board/questions/<%=question._id%>">View</a>
+                        <a class="btn btn-xs" href="/bulletin-board/questions/<%=question._id%>/edit">Edit</a>
                         <form method="post" action="/bulletin-board/questions/<%=question._id%>?_method=DELETE" class="pull-right">
                           <button class="btn btn-xs">Delete</button>
                         </form>
@@ -134,17 +134,31 @@
 
     </div>
     
-    <!--<div class="row">-->
-    <!--    <div class="col-md-12">-->
-    <!--        <h1 style="padding-top: 30px">Saved Bulletins</h1>-->
+</div>
+
+<!--saved posts-->
+
+<div class="container text-center">
+    <h1 class="hq-titles">My Saved Posts</h1> <button class="btn btn-primary btn-lg" id="saved-posts-button">Toggle</button>
+    
+    <div class="row"  id="saved-posts">
+        
+    <% currentUser.favorited.forEach(function(item) { %>
+      <div class="col-md-4">
+        <div class="ui raised segment" style="background:#eeb24a">
             
-    <!--        <%currentUser.favorited.forEach(function(favorite) { %>-->
-    <!--                <div class="ui raised segment">-->
-    <!--                    <p><%=favorite%></p>-->
-    <!--                </div>-->
-    <!--        <% })%>-->
-    <!--    </div>-->
-    <!--</div>-->
+            <h3><%=item.title%></h3>
+            <p>Item type: <%=item.type%></p>
+            <% if (item.type) { %>
+                <a href="/bulletin-board/<%=item.type%>s/<%=item.id%>">View</a>
+            <% } %>
+        </div>
+        
+        </div>
+
+    <% }) %>
+   
+    </div>
 </div>
 
 

@@ -7,10 +7,8 @@ var articleSchema = new mongoose.Schema({
     flag: String,
     summary: String,
     body: String,
-    favorited: Boolean,
-    disliked: Boolean,
-    liked: Boolean,
-    likes: 0,
+    favorites: Number,
+    type: String,
     comments: ["commentSchema"],
     author: {
         id: {

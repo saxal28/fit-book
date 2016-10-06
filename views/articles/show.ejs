@@ -15,10 +15,35 @@
                     <a class="btn btn-xs"href="/bulletin-board/articles/<%=article._id %>/edit">
                        Edit
                     </a>
-                    <form method="post" action="/bulletin-board/articles/<%=article._id%>?_method=DELETE" class="pull-right">
-                        <button class="btn btn-xs">Delete</button>
-                    </form>
                 </div>
+                
+          <!--everything for the favorite button-->
+            <!--favorite row-->
+            <div class="row" style="padding-bottom:20px">
+            <span id="favorite-text">Add to Favorites</span> <a id="favorite-button" class="btn favorite"><i class="fa fa-heart" aria-hidden="true"></i></a>
+            </div>
+            <!--favorite row logic-->
+                <script>
+                // checks to see if already favorited!
+                <% currentUser.favorited.forEach(function(item) { %> 
+                              <% if (item.title === article.title)  { %>
+                                  $("#favorite-text").text("Favorited!");
+                                  $("#favorite-text").css("color", "red");
+                                  $(".fa-heart").css("color", "red");
+                                  $("#favorite-button").addClass("disabled");
+                              <% } %>
+                          <% }) %>
+                
+                // adds to user.favorite.array
+                    $("#favorite-button").on("click", function() { 
+                        <%currentUser.favorited.push({id:article._id, title:article.title, summary:article.summary, image:article.image, type:article.type})%>
+                        <%currentUser.save()%>
+                         $("#favorite-text").text("Favorited!");
+                         $("#favorite-text").css("color", "red");
+                         $(".fa-heart").css("color", "red");
+                         $("#favorite-button").addClass("disabled");
+                    }) 
+                </script>
     </div>
 </div>
     

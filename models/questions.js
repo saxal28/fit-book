@@ -5,6 +5,8 @@ var Comment = require("./comments");
 var questionSchema = new mongoose.Schema({
     title: String,
     body: String,
+    favorites: String,
+    type: String,
     comments: ["commentSchema"],
     author: {
         id: {

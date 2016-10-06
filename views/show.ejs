@@ -5,24 +5,50 @@
     <div class="thumbnail">
         <img src="<%= recipe.image %>" class="img-responsive" style="width:100%">
         <div class="caption">
+            
+            <!--everything for the favorite button-->
+            <!--favorite row-->
+            <span id="favorite-text">Add to Favorites</span> <a id="favorite-button" class="btn favorite"><i class="fa fa-heart" aria-hidden="true"></i></a>
+            <!--favorite row logic-->
+                <script>
+                // checks to see if already favorited!
+                <% currentUser.favorited.forEach(function(item) { %> 
+                              <% if (item.title === recipe.title)  { %>
+                                  $("#favorite-text").text("Favorited!");
+                                  $("#favorite-text").css("color", "red");
+                                  $(".fa-heart").css("color", "red");
+                                  $("#favorite-button").addClass("disabled");
+                              <% } %>
+                          <% }) %>
+                // adds to user.favorite.array
+                    $(".favorite").on("click", function() {
+                        <%currentUser.favorited.push({id:recipe._id, title:recipe.title, summary:recipe.summary, image:recipe.image, type:recipe.type})%>
+                        <%currentUser.save()%>
+                         $("#favorite-text").text("Favorited!");
+                            $("#favorite-text").css("color", "red");
+                            $(".fa-heart").css("color", "red");
+                            $("#favorite-button").addClass("disabled");
+                    })
+                </script>
+                
+                
             <h1 class="text-center"><%=recipe.title%></h1>
                 <h4 class="text-center">by: <strong><%= recipe.author.username %></strong></h4>
                 <hr>
             
             <div class="row text-center">
-                <h2>Nutrition</h2>
-                           Cal: <%=recipe.calories%> |
-                            Carb: <%=recipe.carb%> |
-                            Protein: <%=recipe.protein%> |
-                            Fat: <%=recipe.fat%>
             </div>
             <hr>
             <div class="row nutrition-row">
                 <div class="col-md-6">
-                     <h2>Shopping List</h2>
+                     <h2 class="text-center">Nutrition</h2>
+                           <h5 class="text-center">Cal: <%=recipe.calories%> |
+                            Carb: <%=recipe.carb%> |
+                            Protein: <%=recipe.protein%> |
+                            Fat: <%=recipe.fat%></h5>
                 </div>
                 <div class="col-md-6">
-                    <h2>Instructions</h2>
+                    <h2 class="text-center">Instructions</h2>
                             <h5 class="text-left"><i class="fa fa-star-o" aria-hidden="true"></i> <%=recipe.step1%></h5>
                             <h5 class="text-left"><i class="fa fa-star-o" aria-hidden="true"></i> <%=recipe.step2%></h5>
                             <h5 class="text-left"><i class="fa fa-star-o" aria-hidden="true"></i> <%=recipe.step3%></h5>

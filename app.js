@@ -800,5 +800,23 @@ app.listen(process.env.PORT, process.env.IP, function() {
     console.log("server started! ===>");
 });
 
+//testing
+//finding things in database and updating
+
+//added type 
+
+// Question.find({}, function(err, recipes) {
+//     if(err){
+//         console.log(err)
+//     } else {
+//         recipes.forEach(function(item) {
+//             item.type = "question",
+//             item.save();
+//             console.log(item)
+//             console.log("recipe updated");
+//         })
+//     }
+// })
+
 
 

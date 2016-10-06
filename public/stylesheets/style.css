@@ -7,6 +7,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: Julius Sans One;
+    color:white;
 }
 
 
@@ -513,7 +514,7 @@ hr {
 
 .fa-heart:hover {
     color:pink;
-    font-size:23px;
+    font-size:25px;
 }
 
 .fa-angle-up, .fa-angle-down {
@@ -741,11 +742,16 @@ hr {
 .favorite {
     background:transparent;
     color:white;
-    padding-top:15px;
+    /*padding-top:15px;*/
+}
+
+#favorite-text {
+    font-family: Julius Sans One;
+    font-size:16px;
 }
 
 .nutrition-row {
-    width:60%;
+    width:90%;
     min-width: 300px;
     margin: 0 auto;
 }

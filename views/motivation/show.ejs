@@ -13,6 +13,30 @@
                 <!-- </form>-->
             <% } %>
         </div>
+        <!--everything for the favorite button-->
+            <!--favorite row-->
+            <span id="favorite-text">Add to Favorites</span> <a id="favorite-button" class="btn favorite"><i class="fa fa-heart" aria-hidden="true"></i></a>
+            <!--favorite row logic-->
+                <script>
+                // checks to see if already favorited!
+                <% currentUser.favorited.forEach(function(item) { %> 
+                              <% if (item.title === motivation.title)  { %>
+                                  $("#favorite-text").text("Favorited!");
+                                  $("#favorite-text").css("color", "red");
+                                  $(".fa-heart").css("color", "red");
+                                  $("#favorite-button").addClass("disabled");
+                              <% } %>
+                          <% }) %>
+                // adds to user.favorite.array
+                    $(".favorite").on("click", function() {
+                        <%currentUser.favorited.push({id:motivation._id, title:motivation.title, summary:motivation.summary, image:motivation.image, type:motivation.type})%>
+                        <%currentUser.save()%>
+                         $("#favorite-text").text("Favorited!");
+                            $("#favorite-text").css("color", "red");
+                            $(".fa-heart").css("color", "red");
+                            $("#favorite-button").addClass("disabled");
+                    })
+                </script>
     
     <!--comments-->
 

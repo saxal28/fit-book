@@ -17,7 +17,7 @@
 <div class="jumbotron" style="margin-bottom:0px">
     <h1>Bulletin Board</h1>
     <h3>Post Bulletins or Snag other Bulletins and add them to Your Board!</h3>
-    <a href="/hq" class="btn btn-primary btn-lg" style="margin-top:20px">Go To HQ</a>
+    <a href="/hq" class="btn btn-md" style="margin-top:10px">Go To HQ</a>
 </div>
 
 
@@ -98,9 +98,6 @@
                 <!--        });-->
                 <!--    </script>-->
                 <!--<% %>-->
-                <div class="row thumbnail-button-row">
-                    <button class="btn favorite"><i class="fa fa-heart" aria-hidden="true"></i></button>
-                </div>
           </div>
       </div>
         <h3><%=article.title%></h3>
@@ -154,6 +151,9 @@
                      <a class="btn btn-xs" href="/bulletin-board/questions/<%=question._id%>">View</a>
                      <% if (question.author.username == currentUser.username ) { %>
                          <a class="btn btn-xs" href="/bulletin-board/questions/<%=question._id%>/edit">Edit</a>
+                         <form method="post" action="/bulletin-board/questions/<%=question._id%>?_method=DELETE" class="pull-right" style="margin-left:5px">
+                                <button class="btn btn-xs">X</button>
+                            </form>
                     <% } %>
                 </div>
           </div>
