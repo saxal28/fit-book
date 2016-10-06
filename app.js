@@ -16,8 +16,6 @@ var Motivation = require("./models/motivation");
 var seedDB = require("./seeds");
 var app = express();
 
-
-
 // seedDB();  seed the database
 //local database
 // mongoose.connect("mongodb://localhost/fit-book");
