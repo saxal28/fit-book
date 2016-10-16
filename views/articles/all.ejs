@@ -1,5 +1,11 @@
 <% include ../partials/header %>
 
+<style>
+  h1, h2 {
+    color:#333;
+  }
+</style>
+
 
 <div class="jumbotron" style="margin-bottom:0px">
     <h1>Articles Board</h1>
@@ -66,7 +72,7 @@
               <img src="http://leanmuscleproject.com/wp-content/uploads/2015/11/barbell.jpg">
             </div>
             <div class="content">
-                <a class="header"><%= article.title %> -- <small><%=article.flag%></small></a>
+                <a class="header"><%= article.title %></a>
                 <div class="meta">
                   <span><%= article.summary %></span>
                 </div>
@@ -74,7 +80,7 @@
                     <p><%- article.body%></p>
                 </div>
                 <div class="extra">
-                    <a href="/bulletin-board/articles/<%=article._id%>"><button class="ui mini orange button"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
+                    <a href="/bulletin-board/articles/<%=article._id%>"><button class="ui small inverted orange button"><i class="fa fa-arrow-right" aria-hidden="true"></i></button></a>
                 </div>
             </div>
   </div>

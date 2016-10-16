@@ -8,7 +8,7 @@ $(".btn").hover(
 });
 
 $(document).ready(function() {
-    $('#footer, #section1, #section2, #section4, .bulletin-navbar, .thumbnail, .ui.raised.segment, .item').addClass("hideme").viewportChecker({
+    $('#footer, #section1, #section2, #section4, .bulletin-navbar, .thumbnail, .ui.raised.segment, .item, #favorite-text, #favorite-button').addClass("hideme").viewportChecker({
         classToAdd: 'visible animated fadeInUp',
         offset: 100
        });
